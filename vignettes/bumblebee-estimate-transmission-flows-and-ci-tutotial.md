@@ -9,15 +9,6 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, echo = FALSE, message = FALSE}
-# Global options
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path="fig/"
-)
-options(tibble.print_min = 4L, tibble.print_max = 4L)
-```
 
 
 ## Background
@@ -173,9 +164,7 @@ intervention.
 ## A step further: Exploring available options
 
 
-Further to estimating transmission flows, the bumblebee package provides the following:
-
-estimates for:
+Further to estimating transmission flows, the bumblebee package provides estimates for:
 
 
 * p_hat, the probability of linkage between pathogen sequences from two individuals randomly 
@@ -190,11 +179,11 @@ estimates for:
 
 and confidence intervals for the following methods: 
 
-* Goodman confidence intervals with a continuity correction (useful for small samples) 
+* Goodman with a continuity correction (useful for small samples) 
 
-* Sison-Glaz confidence intervals 
+* Sison-Glaz
 
-* Queensbury-Hurst confidence intervals
+* Queensbury-Hurst
 
 
 ```
