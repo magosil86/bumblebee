@@ -74,10 +74,10 @@ library(dplyr)
 
 # Load and view data
 #
-# The input data comprises counts of observed directed HIV transmission pairs within and
-# between intervention and control communities in the BCPP/Ya Tsie trial, sampling information
-# and the probability of linkage between individuals sampled from intervention and
-# control communities (i.e. \code{p_hat})
+# The input data comprises counts of observed directed HIV transmission pairs within 
+# and between intervention and control communities in the BCPP/Ya Tsie trial,
+# sampling information and the probability of linkage between individuals sampled
+# from intervention and control communities (i.e. \code{p_hat})
 #
 # See ?estimate_p_hat() for details on estimating p_hat
 results_estimate_p_hat <- estimated_hiv_transmission_flows[, c(1:10)]

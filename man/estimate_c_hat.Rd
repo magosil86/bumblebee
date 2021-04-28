@@ -4,7 +4,7 @@
 \alias{estimate_c_hat}
 \alias{c_hat}
 \alias{est_c_hat}
-\alias{estima_c_hat}
+\alias{estim_c_hat}
 \alias{estimate_c_hat.default}
 \title{\code{estimate_c_hat} Estimates probability of clustering}
 \usage{
@@ -52,15 +52,15 @@ library(dplyr)
 
 # We shall use the data of HIV transmissions within and between intervention and control
 # communities in the BCPP/Ya Tsie HIV prevention trial. To learn more about the data 
-# ?counts_hiv_transmission_pairs and ?sampling_frequency
+# ?counts_hiv_transmission_pairs, ?sampling_frequency and ?estimated_hiv_transmission_flows
 
 
 # Load and view data
 #
 # The input data comprises counts of observed directed HIV transmission pairs within and
-# between intervention and control communities in the BCPP/Ya Tsie trial, sampling information
-# and the probability of linkage between individuals sampled from intervention and
-# control communities (i.e. \code{p_hat})
+# between intervention and control communities in the BCPP/Ya Tsie trial, sampling 
+# information and the probability of linkage between individuals sampled from
+# intervention and control communities (i.e. \code{p_hat})
 #
 # See ?estimate_p_hat() for details on estimating p_hat
 results_estimate_p_hat <- estimated_hiv_transmission_flows[, c(1:10)]

@@ -80,10 +80,10 @@ library(dplyr)
 
 # Load and view data
 #
-# The input data comprises counts of observed directed HIV transmission pairs within and
-# between intervention and control communities in the BCPP/Ya Tsie trial, sampling information
-# and the probability of linkage between individuals sampled from intervention and
-# control communities (i.e. \code{p_hat})
+# The input data comprises counts of observed directed HIV transmission pairs 
+# within and between intervention and control communities in the BCPP/Ya Tsie 
+# trial, sampling information and the probability of linkage between individuals
+# sampled from intervention and control communities (i.e. \code{p_hat})
 #
 # See ?estimate_p_hat() for details on estimating p_hat
 results_estimate_p_hat <- estimated_hiv_transmission_flows[, c(1:10)]
@@ -91,7 +91,9 @@ results_estimate_p_hat <- estimated_hiv_transmission_flows[, c(1:10)]
 results_estimate_p_hat
 
 # Estimate prob_group_pairing_and_linked
-results_prob_group_pairing_and_linked <- estimate_prob_group_pairing_and_linked(df_counts_and_p_hat = results_estimate_p_hat, individuals_population_in = sampling_frequency$number_population)
+results_prob_group_pairing_and_linked <- estimate_prob_group_pairing_and_linked(
+    df_counts_and_p_hat = results_estimate_p_hat, 
+    individuals_population_in = sampling_frequency$number_population)
 
 # View results
 results_prob_group_pairing_and_linked

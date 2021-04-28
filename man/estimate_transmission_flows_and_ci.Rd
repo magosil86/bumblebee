@@ -78,7 +78,7 @@ The following additional fields are returned if the detailed_report flag is set
 \itemize{
 \item prob_group_pairing_and_linked, Probability that a pair of pathogen sequences is from a specific population group pairing and is linked
 \item c_hat, Probability that a randomly selected pathogen sequence in one population group links to at least
-\item one pathogen sequence in another population group i.e. probability of clustering
+one pathogen sequence in another population group i.e. probability of clustering
 \item est_goodman_cc, Point estimate, Goodman method Confidence intervals with continuity correction
 \item lwr_ci_goodman_cc, Lower bound of Goodman confidence interval
 \item upr_ci_goodman_cc, Upper bound of Goodman confidence interval
@@ -127,21 +127,23 @@ library(dplyr)
 # communities in the BCPP/Ya Tsie HIV prevention trial. To learn more about the data 
 # ?counts_hiv_transmission_pairs and ?sampling_frequency 
 
-# View counts of observed directed HIV transmissions within and between intervention and control communities
+# View counts of observed directed HIV transmissions within and between intervention 
+# and control communities
 counts_hiv_transmission_pairs
 
-# View the estimated number of individuals with HIV in intervention and control communities and the
-# number of individuals sampled from each
+# View the estimated number of individuals with HIV in intervention and control 
+# communities and the number of individuals sampled from each
 sampling_frequency
 
 # Estimate transmission flows within and between intervention and control communities
 # accounting for variable sampling among population groups. 
 
 # Basic output
-results_estimate_transmission_flows_and_ci <- estimate_transmission_flows_and_ci(group_in = sampling_frequency$population_group, 
-                                                                                 individuals_sampled_in = sampling_frequency$number_sampled, 
-                                                                                 individuals_population_in = sampling_frequency$number_population, 
-                                                                                 linkage_counts_in = counts_hiv_transmission_pairs)
+results_estimate_transmission_flows_and_ci <- estimate_transmission_flows_and_ci(
+    group_in = sampling_frequency$population_group, 
+    individuals_sampled_in = sampling_frequency$number_sampled, 
+    individuals_population_in = sampling_frequency$number_population, 
+    linkage_counts_in = counts_hiv_transmission_pairs)
 
 # View results
 results_estimate_transmission_flows_and_ci
@@ -150,11 +152,12 @@ results_estimate_transmission_flows_and_ci
 dframe <- results_estimate_transmission_flows_and_ci$flows_dataset
 
 # Detailed output
-results_estimate_transmission_flows_and_ci_detailed <- estimate_transmission_flows_and_ci(group_in = sampling_frequency$population_group, 
-																							 individuals_sampled_in = sampling_frequency$number_sampled, 
-																							 individuals_population_in = sampling_frequency$number_population, 
-																							 linkage_counts_in = counts_hiv_transmission_pairs, 
-																							 detailed_report = TRUE)
+results_estimate_transmission_flows_and_ci_detailed <- estimate_transmission_flows_and_ci(
+    group_in = sampling_frequency$population_group, 
+	   individuals_sampled_in = sampling_frequency$number_sampled, 
+	   individuals_population_in = sampling_frequency$number_population, 
+	   linkage_counts_in = counts_hiv_transmission_pairs, 
+	   detailed_report = TRUE)
 
 # View results
 results_estimate_transmission_flows_and_ci_detailed
@@ -164,22 +167,24 @@ results_estimate_transmission_flows_and_ci_detailed
 # To show intermediate output set verbose_output = TRUE
 
 # Basic output
-results_estimate_transmission_flows_and_ci <- estimate_transmission_flows_and_ci(group_in = sampling_frequency$population_group, 
-																					individuals_sampled_in = sampling_frequency$number_sampled, 
-																					individuals_population_in = sampling_frequency$number_population, 
-																					linkage_counts_in = counts_hiv_transmission_pairs, 
-																					verbose_output = TRUE)
+results_estimate_transmission_flows_and_ci <- estimate_transmission_flows_and_ci(
+    group_in = sampling_frequency$population_group, 
+	   individuals_sampled_in = sampling_frequency$number_sampled, 
+	   individuals_population_in = sampling_frequency$number_population, 
+	   linkage_counts_in = counts_hiv_transmission_pairs, 
+	   verbose_output = TRUE)
 
 # View results
 results_estimate_transmission_flows_and_ci
 
 # Detailed output
-results_estimate_transmission_flows_and_ci_detailed <- estimate_transmission_flows_and_ci(group_in = sampling_frequency$population_group, 
-																							 individuals_sampled_in = sampling_frequency$number_sampled, 
-																							 individuals_population_in = sampling_frequency$number_population, 
-																							 linkage_counts_in = counts_hiv_transmission_pairs, 
-																							 detailed_report = TRUE, 
-																							 verbose_output = TRUE)
+results_estimate_transmission_flows_and_ci_detailed <- estimate_transmission_flows_and_ci(
+    group_in = sampling_frequency$population_group, 
+	   individuals_sampled_in = sampling_frequency$number_sampled, 
+	   individuals_population_in = sampling_frequency$number_population, 
+	   linkage_counts_in = counts_hiv_transmission_pairs, 
+	   detailed_report = TRUE, 
+	   verbose_output = TRUE)
 
 # View results
 results_estimate_transmission_flows_and_ci_detailed

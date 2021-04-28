@@ -102,14 +102,19 @@ library(dplyr)
 # communities in the BCPP/Ya Tsie HIV prevention trial. To learn more about the data 
 # ?counts_hiv_transmission_pairs and ?sampling_frequency 
 
-# View counts of observed directed HIV transmissions within and between intervention and control communities
+# View counts of observed directed HIV transmissions within and between intervention 
+# and control communities
 counts_hiv_transmission_pairs
 
-# View the estimated number of individuals with HIV in intervention and control communities and the
-# number of individuals sampled from each
+# View the estimated number of individuals with HIV in intervention and control 
+# communities and the number of individuals sampled from each
 sampling_frequency
 
-results_prep_p_hat <- prep_p_hat(group_in = sampling_frequency$population_group, individuals_sampled_in = sampling_frequency$number_sampled, individuals_population_in = sampling_frequency$number_population, linkage_counts_in = counts_hiv_transmission_pairs, verbose_output = TRUE)
+results_prep_p_hat <- prep_p_hat(group_in = sampling_frequency$population_group, 
+                                 individuals_sampled_in = sampling_frequency$number_sampled, 
+                                 individuals_population_in = sampling_frequency$number_population, 
+                                 linkage_counts_in = counts_hiv_transmission_pairs, 
+                                 verbose_output = TRUE)
 
 # View results
 results_prep_p_hat

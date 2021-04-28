@@ -98,13 +98,17 @@ results_estimate_theta_hat <- estimated_hiv_transmission_flows[, c(1:13)]
 results_estimate_theta_hat
  
 # Compute Goodman confidence intervals (Default)
-results_estimate_multinom_ci <- estimate_multinom_ci(df_theta_hat = results_estimate_theta_hat, detailed_report = FALSE)
+results_estimate_multinom_ci <- estimate_multinom_ci(
+    df_theta_hat = results_estimate_theta_hat, 
+    detailed_report = FALSE)
 
 # View results
 results_estimate_multinom_ci
 
 # Compute Goodman, Sison-Glaz and Queensbury-Hurst confidence intervals
-results_estimate_multinom_ci_detailed <- estimate_multinom_ci(df_theta_hat = results_estimate_theta_hat, detailed_report = TRUE)
+results_estimate_multinom_ci_detailed <- estimate_multinom_ci(
+    df_theta_hat = results_estimate_theta_hat, 
+    detailed_report = TRUE)
 
 # View results
 results_estimate_multinom_ci_detailed

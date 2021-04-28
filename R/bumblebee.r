@@ -15,8 +15,8 @@
 #' high-throughput or next-generation sequence data. See references to learn more
 #' about phyloscanner.
 #' 
-#' @section The [estimate_transmission_flows()] function:
-#' To estimate transmission flows the function: estimate_transmission_flows_and_ci()
+#' @section The \code{estimate_transmission_flows()} function:
+#' To estimate transmission flows the function: \code{estimate_transmission_flows_and_ci()}
 #' computes the conditional probability, \code{theta_hat} that a pair of pathogen sequences 
 #' is from a specific population group pairing given that the pair is linked. For two population
 #' groups of interest \eqn{(u,v)} this denotes the relative probability of transmission 
@@ -26,7 +26,7 @@
 #' 
 #' 
 #' To learn more and try some examples, see documentation of the 
-#' [estimate_transmission_flows()] function and the bumblebee package
+#' \code{estimate_transmission_flows()} function and the bumblebee package
 #' website \url{https://magosil86.github.io/bumblebee/}.
 #' 
 #' @seealso See the following functions for details on estimating transmission flows
@@ -79,4 +79,5 @@
 #' @aliases bumblebee
 #' 
 #' @keywords internal
+#' @importFrom dplyr %>%
 "_PACKAGE"

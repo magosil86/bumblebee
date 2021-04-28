@@ -27,8 +27,9 @@ population-level incidence. For further details see:
 \url{https://magosil86.github.io/bumblebee}.
 }
 \references{
-Makhema, J., et al., Universal Testing, Expanded Treatment, and Incidence
-of HIV Infection in Botswana. New England Journal of Medicine, 2019.
-381(3): p. 230-242.
+Magosi LE, Yinfeng Z, Golubchick T, De Gruttola V, ..., Lockman S, Essex M, Lipsitch M,
+on behalf of the Botswana Combination Prevention Project and the PANGEA consortium (2021)
+Deep-sequence phylogenetics to quantify patterns of HIV transmission in the context of a
+universal testing and treatment trial – BCPP/ Ya Tsie trial. To submit for publication.
 }
 \keyword{datasets}

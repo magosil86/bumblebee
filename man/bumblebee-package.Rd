@@ -21,9 +21,9 @@ epidemiological contacts. Note: Deep-sequence data is also commonly referred to 
 high-throughput or next-generation sequence data. See references to learn more
 about phyloscanner.
 }
-\section{The \code{\link[=estimate_transmission_flows]{estimate_transmission_flows()}} function}{
+\section{The \code{estimate_transmission_flows()} function}{
 
-To estimate transmission flows the function: estimate_transmission_flows_and_ci()
+To estimate transmission flows the function: \code{estimate_transmission_flows_and_ci()}
 computes the conditional probability, \code{theta_hat} that a pair of pathogen sequences
 is from a specific population group pairing given that the pair is linked. For two population
 groups of interest \eqn{(u,v)} this denotes the relative probability of transmission
@@ -32,7 +32,7 @@ within and between population groups \eqn{u} and \eqn{v} adjusted for sampling h
 \deqn{\theta_ij = P(pair is from population groups (i, j) | pair is linked), where i = u,v and j = u,v}
 
 To learn more and try some examples, see documentation of the
-\code{\link[=estimate_transmission_flows]{estimate_transmission_flows()}} function and the bumblebee package
+\code{estimate_transmission_flows()} function and the bumblebee package
 website \url{https://magosil86.github.io/bumblebee/}.
 }
 
