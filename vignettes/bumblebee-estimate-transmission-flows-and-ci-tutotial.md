@@ -139,9 +139,9 @@ sampling_frequency
 
 results_estimate_transmission_flows_and_ci <- estimate_transmission_flows_and_ci(
     group_in = sampling_frequency$population_group, 
-	individuals_sampled_in = sampling_frequency$number_sampled, 
-	individuals_population_in = sampling_frequency$number_population, 
-	linkage_counts_in = counts_hiv_transmission_pairs)
+    individuals_sampled_in = sampling_frequency$number_sampled, 
+    individuals_population_in = sampling_frequency$number_population, 
+    linkage_counts_in = counts_hiv_transmission_pairs)
  
 # View results
 results_estimate_transmission_flows_and_ci
