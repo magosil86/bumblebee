@@ -1,3 +1,9 @@
 ^LICENSE\.md$
 ^\.github$
 ^codecov\.yml$
+^CRAN-RELEASE$
+^README\.Rmd$
+^README\.md$
+^_config.yml$
+^CONDUCT.md$
+^cran-comments.md$

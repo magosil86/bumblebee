@@ -5,7 +5,7 @@
 \alias{bumblebee-package}
 \alias{_PACKAGE}
 \alias{bumblebee}
-\title{Bumblebee: Quantify Disease Transmission Within and Between Population groups}
+\title{Bumblebee: Quantify Disease Transmission Within and Between Population Groups}
 \description{
 Quantifying the impact of interventions and demographics on patterns of disease
 transmission is important for controlling the spread of infections. The bumblebee
@@ -39,8 +39,9 @@ website \url{https://magosil86.github.io/bumblebee/}.
 \section{Cite the package}{
 
 Please cite the package using the following reference:
-Author et al (2021). Title.  \emph{Journal of },
-\bold{36}(3), 1--48. \url{http://www.}
+Lerato E. Magosi, Marc Lipsitch (2021). Bumblebee: Quantify Disease
+Transmission Within and Between Population Groups. R package version
+0.1.0 \url{https://magosil86.github.io/bumblebee/}
 }
 
 \references{
