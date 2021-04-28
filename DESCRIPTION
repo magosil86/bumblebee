@@ -1,5 +1,5 @@
 Package: bumblebee
-Title: Quantify Disease Transmission Within and Between Population groups 
+Title: Quantify Disease Transmission Within and Between Population Groups 
 Version: 0.1.0.9000
 Authors@R: c(
     person("Lerato E", "Magosi", email = "lmagosi@hsph.harvard.edu",
