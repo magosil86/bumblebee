@@ -19,9 +19,9 @@ Population groups might include: communities, geographical regions, age-gender g
 
 ### Why is this useful?
 
-Quantifying the contribution of interventions, demographics and geographical factors to shaping patterns of transmission is important for understanding and ultimately controlling an infectious disease.
+Quantifying the contribution of interventions, demographics and geographical factors to shaping patterns of transmission is important for understanding and ultimately controlling the spread of an infectious disease.
 
-Example application areas include: 
+### Example application areas include: 
 
 1. quantifying HIV transmission patterns in the context of HIV prevention initiatives such as universal test-and-treat 
 
