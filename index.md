@@ -67,16 +67,19 @@ library(bumblebee)  # for estimating transmission flows and confidence intervals
 
 For an overview of available functions in bumblebee, type at the R prompt:
 
-* ?estimate_transmission_flows_and_ci,
+```
+* ?estimate_transmission_flows_and_ci()
 
-* ?estimate_p_hat,
+* ?estimate_p_hat()
 
-* ?estimate_theta_hat
+* ?estimate_theta_hat()
 
+```
 
 ## Details
 
 * To estimate the relative probability of transmissions within and between population groups accounting for variable sampling among population groups, the bumblebee package computes that conditional probability that a pair of individuals is from a specific population group pairing given that the pair is linked.
+
 To read up about the statistical theory behind estimating transmission flows see:
 
 Magosi LE, Yinfeng Z, Golubchick T, De Gruttola V, ..., Lockman S, Essex M, Lipsitch M, 
