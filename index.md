@@ -8,7 +8,7 @@
 
 <!-- badges: end -->
 
-## bumblebee
+## **bumblebee**
 ![bumblebee_transmission_flows_with_title_img](https://user-images.githubusercontent.com/8364031/116499664-b91b9080-a87a-11eb-82be-edc7468946cf.png)
 
 ## Overview
