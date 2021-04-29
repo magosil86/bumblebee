@@ -13,6 +13,20 @@
 
 ## Overview
 
+Bumblebee uses counts of directed transmission pairs identified between samples from population groups of interest to estimate the flow of transmissions within and between those population groups accounting for sampling heterogeneity.
+
+Population groups might include: communities, geographical regions, age-gender groupings or arms of a cluster-randomized trial.
+
+### Why is this useful?
+
+Quantifying the contribution of interventions, demographics and geographical factors to shaping patterns of transmission is important for understanding and ultimately controlling an infectious disease.
+
+Example application areas include: 
+
+1. quantifying HIV transmission patterns in the context of HIV prevention initiatives such as universal test-and-treat 
+
+2. quantifying SARS-COV-2 transmission patterns in the presence of heterogeneous vaccine uptake
+
 ## Installation
 
 ## Use
