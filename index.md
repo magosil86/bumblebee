@@ -1,3 +1,5 @@
+![bumblebee_transmission_flows_img](https://user-images.githubusercontent.com/8364031/116498635-2c6fd300-a878-11eb-84b0-a908149cf56a.png)
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/magosil86/bumblebee/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
