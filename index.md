@@ -9,7 +9,7 @@
 <!-- badges: end -->
 
 ## Bumblebee
-![bumblebee_transmission_flows_with_title_and_labels_img](https://user-images.githubusercontent.com/8364031/116549066-0e7b9000-a8c3-11eb-9f93-9c78b674e1b0.png)
+![bumblebee_transmission_flows_with_title_and_labels_img](https://user-images.githubusercontent.com/8364031/116549613-b4c79580-a8c3-11eb-9415-1330f491e6a0.png)
 
 ## Overview
 
