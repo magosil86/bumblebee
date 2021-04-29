@@ -23,9 +23,9 @@ Quantifying the contribution of interventions, demographics and geographical fac
 
 ### Example application areas include: 
 
-1. quantifying HIV transmission patterns in the context of HIV prevention initiatives such as universal test-and-treat 
+1. quantifying transmission patterns of HIV, the virus causes AIDS, in the context of HIV prevention initiatives such as universal test-and-treat 
 
-2. quantifying SARS-COV-2 transmission patterns in the presence of heterogeneous vaccine uptake
+2. quantifying transmission patterns of SARS-COV-2, virus causes COVID-19, in the presence of heterogeneous vaccine uptake
 
 
 ## Installation: bumblebee [**R** package](https://github.com/magosil86/bumblebee)
