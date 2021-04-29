@@ -57,36 +57,58 @@ library(dplyr)      # for working with data.frames
 
 ## Usage
 
-*  Take a look at an [example workflow](https://github.com/magosil86/getmstatistic/blob/master/vignettes/getmstatistic-tutorial.md)
+Load the bumblebee package in your current R session, and try some examples in the [example workflow]()
+
+```
+# Load libraries
+library(bumblebee)  # for estimating transmission flows and confidence intervals
+
+```
+
+For an overview of available functions in bumblebee, type at the R prompt:
+
+* ?estimate_transmission_flows_and_ci,
+
+* ?estimate_p_hat,
+
+* ?estimate_theta_hat
+
 
 ## Details
 
-* Essentially, _M_ statistics are computed by aggregating standardized predicted random effects (SPREs). To read up about the statistical theory behind the _M_ statistic see:
+* To estimate the relative probability of transmissions within and between population groups accounting for variable sampling among population groups, the bumblebee package computes that conditional probability that a pair of individuals is from a specific population group pairing given that the pair is linked.
+To read up about the statistical theory behind estimating transmission flows see:
 
-Magosi LE, Goel A, Hopewell JC, Farrall M, on behalf of the CARDIoGRAMplusC4D Consortium (2017) Identifying systematic heterogeneity patterns in genetic association meta-analysis studies. PLoS Genet 13(5): e1006755. [https://doi.org/10.1371/journal.pgen.1006755](https://doi.org/10.1371/journal.pgen.1006755).
+Magosi LE, Yinfeng Z, Golubchick T, De Gruttola V, ..., Lockman S, Essex M, Lipsitch M, 
+on behalf of the Botswana Combination Prevention Project and the PANGEA consortium (2021) 
+Deep-sequence phylogenetics to quantify patterns of HIV transmission in the context of a 
+universal testing and treatment trial – BCPP/ Ya Tsie trial. To submit for publication.
 
 
 ## Getting help
 
-To suggest new features, learn about bumblebee updates, report bugs, ask questions, or just interact with other users, sign up to the [getmstatistic](https://groups.google.com/forum/#!forum/getmstatistic) mailing list.
+To suggest a new feature, report a bug or ask for help, please provide a reproducible example at: https://github.com/magosil86/bumblebee/issues. Also see reprex to learn more about generating reproducible examples.
 
 
 ## Code of conduct
 Contributions are welcome. Please observe the [Contributor Code of Conduct](https://github.com/magosil86/getmstatistic/blob/master/CONDUCT.md) when participating in this project.
 
 ## Citation
-Magosi LE, Goel A, Hopewell JC, Farrall M, on behalf of the CARDIoGRAMplusC4D Consortium (2017) Identifying systematic heterogeneity patterns in genetic association meta-analysis studies. PLoS Genet 13(5): e1006755. [https://doi.org/10.1371/journal.pgen.1006755](https://doi.org/10.1371/journal.pgen.1006755).
+Magosi LE, Yinfeng Z, Golubchick T, De Gruttola V, ..., Lockman S, Essex M, Lipsitch M, on behalf of the Botswana Combination Prevention Project and the PANGEA consortium (2021) Deep-sequence phylogenetics to quantify patterns of HIV transmission in the context of a universal testing and treatment trial – BCPP/ Ya Tsie trial. To submit for publication.
 
+## Acknowledgements and references.
+The bumblebee package extends methods from Carnegie et al and Steve Cherry to estimate transmission flows and confidence intervals
+Carnegie, N.B., et al., Linkage of viral sequences among HIV-infected village residents in Botswana: estimation of linkage rates in the presence of missing data. PLoS Computational Biology, 2014. 10(1): p. e1003430.
 
-## Acknowledgements.
-Roger M. Harbord’s metareg command for computation of standardized predicted random effects which are then incorporated into calculations for the _M_ statistics. Harbord, R. M., & Higgins, J. P. T. (2008). Meta-regression in Stata. Stata Journal 8: 493‚Äì519.
+Cherry, S., A Comparison of Confidence Interval Methods for Habitat Use-Availability Studies. The Journal of Wildlife Management, 1996. 60(3): p. 653-658.
 
+Goodman, L.A., On Simultaneous Confidence Intervals for Multinomial Proportions. Technometrics, 1965. 7(2): p. 247-254.
 
 ## Authors.
-Lerato E. Magosi, Jemma C. Hopewell and Martin Farrall.
+Lerato E. Magosi and Marc Lipsitch.
 
 ## Maintainer.
-Lerato E. Magosi lmagosi@well.ox.ac.uk or magosil86@gmail.com
+Lerato E. Magosi lmagosi@hsph.harvard.edu or magosil86@gmail.com
 
 ## License
 
