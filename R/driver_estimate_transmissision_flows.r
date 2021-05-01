@@ -2,20 +2,22 @@
 #       and document using roxygen tags
 
 
-#' @title \code{estimate_transmission_flows_and_ci} Estimates transmission flows and accompanying confidence intervals
+#' @title \code{estimate_transmission_flows_and_ci} Estimates transmission flows and corresponding confidence intervals
 #' 
-#' @description This function estimates transmission flows within and between population
-#'              groups accounting for variable sampling among population groups. Confidence
-#'              intervals for estimated transmission flows are provided with the following
-#'              methods: Goodman, Sison-Glaz and Queensbury-Hurst.
+#' @description This function estimates transmission flows or the relative probability
+#'              of transmission within and between population groups accounting for 
+#'              variable sampling among population groups. 
+#' 
+#' Corresponding confidence intervals are provided with the following methods: Goodman,
+#' Goodman with a continuity correction, Sison-Glaz and Queensbury-Hurst.
 #'              
-#' @aliases estimate_transmission_flows_and_ci estim_transmission_flows_and_ci est_transmission_flows_and_ci
+#' @aliases estimate_transmission_flows_and_ci flows_and_ci 
 #'              
 #' @param group_in, A character vector indicating population groups/strata (e.g. communities, age-groups, genders or trial arms) between which transmission flows will be evaluated, 
 #' @param individuals_sampled_in, A numeric vector indicating the number of individuals sampled per population group, 
 #' @param individuals_population_in, A numeric vector of the estimated number of individuals per population group, 
-#' @param linkage_counts_in A data.frame of counts of identified/observed 
-#'        linked pairs per population group pairing. \cr
+#' @param linkage_counts_in A data.frame of counts of linked pairs identified between samples of each population
+#'        group pairing of interest. \cr
 #'        The data.frame should contain the following three fields: 
 #'  	   \itemize{
 #'  	       \item H1_group (character) Name of population group 1 
@@ -41,8 +43,8 @@
 #' 	    \item p_hat, Probability that pathogen sequences from two individuals randomly sampled from their respective population groups are linked                                      
 #' 	    \item est_linkedpairs_in_population, Estimated transmission pairs between population groups 1 and 2
 #' 	    \item theta_hat, Estimated transmission flows or relative probability of transmission within and between population groups 1 and 2 adjusted
-#' 	    \item for sampling heterogeneity. More precisely, the conditional probability that a pair of pathogen sequences is from a specific population 
-#' 	    \item group pairing given that the pair is linked.
+#' 	          for sampling heterogeneity. More precisely, the conditional probability that a pair of pathogen sequences is from a specific population 
+#' 	          group pairing given that the pair is linked.
 #' 	    \item obs_trm_pairs_est_goodman, Point estimate, Goodman method Confidence intervals for observed transmission pairs
 #' 	    \item obs_trm_pairs_lwr_ci_goodman, Lower bound of Goodman confidence interval 
 #' 	    \item obs_trm_pairs_upr_ci_goodman, Upper bound of Goodman confidence interval 
@@ -74,50 +76,102 @@
 #' }
 #' 
 #' @details Counts of observed directed transmission pairs can be obtained from 
-#'          deep-sequence phylogenetic data (via phyloscanner) or from known
-#'          epidemiological contacts. Note: Deep-sequence data is also commonly 
-#'          referred to as high-throughput or next-generation sequence data. See
-#'          references to learn more about phyloscanner. 
+#'     deep-sequence phylogenetic data (via phyloscanner) or from known
+#'     epidemiological contacts. Note: Deep-sequence data is also commonly 
+#'     referred to as high-throughput or next-generation sequence data. See
+#'     references to learn more about phyloscanner. 
 #'
-#'          The \code{estimate_transmission_flows_and_ci} function is a wrapper function 
-#'          that calls the \code{estimate_theta_hat} function to estimate transmission flows
-#'          and the \code{estimate_multinom_ci} function to compute the corresponding 
-#'          confidence intervals.
-#'           
+#' The \code{estimate_transmission_flows_and_ci()} function is a 
+#' wrapper function that calls the following functions:
+#'
+#' \enumerate{
+#' 
+#'    \item The \code{prep_p_hat()} function to determine all possible 
+#'          combinations of the population groups/strata provided by 
+#'          the user. Type \code{?prep_p_hat()} at R prompt to learn 
+#'          more.
+#'     	  
+#'    \item The \code{estimate_p_hat()} function to compute the 
+#'          probability of linkage between pathogen sequences from 
+#'          two individuals randomly sampled from their respective 
+#'          population groups. Type \code{?estimate_p_hat()} at R 
+#'          prompt to learn more.
+#'    	  
+#'    \item The \code{estimate_theta_hat()} function that uses 
+#'          \code{p_hat} estimates to compute the conditional 
+#'          probability of linkage that a pair of pathogen sequences 
+#'          is from a specific population group pairing given that 
+#'          the pair is linked. The conditional  probability, 
+#'          \code{theta_hat} represents transmission flows or 
+#'          the relative probability of transmission within and between 
+#'          population groups adjusted for variable sampling among 
+#'          population groups. Type \code{?estimate_theta_hat()} at R 
+#'          prompt to learn more.
+#'    	  
+#'    \item The \code{estimate_multinom_ci()} function to estimate 
+#'          corresponding confidence intervals for the computed
+#'          transmission flows.
+#' }
+#' 
+#' Further to estimating transmission flows and corresponding confidence
+#' intervals the \code{estimate_transmission_flows_and_ci()} function provides 
+#' estimates for:
 #'          
-#' @seealso \code{\link{estimate_theta_hat}} and \code{\link{estimate_theta_hat}} to learn
+#' \enumerate{
+#'     
+#'    \item \code{prob_group_pairing_and_linked}, the joint probability that a
+#'          pair of pathogen sequences is from a specific population group
+#'          pairing and linked. Type \code{?estimate_prob_group_pairing_and_linked()} 
+#'          at R prompt to learn more.
+#'               
+#'    \item \code{c_hat}, the probability of clustering that a pathogen sequence 
+#'          from a population group of interest is linked to one or more 
+#'          pathogen sequences in another population group of interest. Type
+#'          \code{?estimate_c_hat()} at R prompt to learn more.
+#'      
+#' }
+#'         
+#' @seealso \code{\link{estimate_theta_hat}} and \code{\link{estimate_multinom_ci}} to learn
 #'          more about estimation of transmission flows and confidence intervals.
 #' 
 #' @references
 #' \enumerate{
+#'
+#'    \item Magosi LE, et al., Deep-sequence phylogenetics to quantify patterns of 
+#'          HIV transmission in the context of a universal testing and treatment
+#'          trial – BCPP/ Ya Tsie trial. To submit for publication, 2021.
 #' 
 #'    \item Carnegie, N.B., et al., Linkage of viral sequences among HIV-infected
-#' 		 village residents in Botswana: estimation of linkage rates in the 
-#' 		 presence of missing data. PLoS Computational Biology, 2014. 10(1): 
-#' 		 p. e1003430.
+#' 		    village residents in Botswana: estimation of linkage rates in the 
+#' 		    presence of missing data. PLoS Computational Biology, 2014. 10(1): 
+#' 		    p. e1003430.
+#'
+#'    \item Cherry, S., A Comparison of Confidence Interval Methods for Habitat 
+#'          Use-Availability Studies. The Journal of Wildlife Management, 1996. 
+#'          60(3): p. 653-658.
 #' 
 #'    \item Ratmann, O., et al., Inferring HIV-1 transmission networks and sources of 
-#' 		 epidemic spread in Africa with deep-sequence phylogenetic analysis. 
-#' 		 Nature Communications, 2019. 10(1): p. 1411.
+#' 		    epidemic spread in Africa with deep-sequence phylogenetic analysis. 
+#' 		    Nature Communications, 2019. 10(1): p. 1411.
 #' 
 #'    \item Wymant, C., et al., PHYLOSCANNER: Inferring Transmission from Within- and
-#' 		 Between-Host Pathogen Genetic Diversity. Molecular Biology and Evolution,
-#' 		 2017. 35(3): p. 719-733.
+#' 		    Between-Host Pathogen Genetic Diversity. Molecular Biology and Evolution,
+#' 		    2017. 35(3): p. 719-733.
 #'  
 #'    \item Goodman, L. A. On Simultaneous Confidence Intervals for Multinomial Proportions 
-#' 		 Technometrics, 1965. 7, 247-254.
+#' 		    Technometrics, 1965. 7, 247-254.
 #' 
 #'    \item Sison, C.P and Glaz, J. Simultaneous confidence intervals and sample size determination
-#' 		 for multinomial proportions. Journal of the American Statistical Association, 
-#' 		 1995. 90:366-369.
+#' 		    for multinomial proportions. Journal of the American Statistical Association, 
+#' 		    1995. 90:366-369.
 #' 
 #'    \item Glaz, J., Sison, C.P. Simultaneous confidence intervals for multinomial proportions. 
-#' 		 Journal of Statistical Planning and Inference, 1999. 82:251-262.
+#' 		    Journal of Statistical Planning and Inference, 1999. 82:251-262.
 #' 
 #'    \item May, W.L., Johnson, W.D. Constructing two-sided simultaneous confidence intervals for 
-#' 		 multinomial proportions for small counts in a large number of cells. 
-#' 		 Journal of Statistical Software, 2000. 5(6).
-#' 		 Paper and code available at https://www.jstatsoft.org/v05/i06.
+#' 		    multinomial proportions for small counts in a large number of cells. 
+#' 		    Journal of Statistical Software, 2000. 5(6).
+#' 		    Paper and code available at https://www.jstatsoft.org/v05/i06.
 #' 
 #' }
 #' 
@@ -165,7 +219,9 @@
 #' 
 #' # View results
 #' results_estimate_transmission_flows_and_ci_detailed
-#' 
+#'
+#' # Retrieve dataset of estimated transmission flows 
+#' dframe <- results_estimate_transmission_flows_and_ci_detailed$flows_dataset 
 #' 
 #' # Options:
 #' # To show intermediate output set verbose_output = TRUE
@@ -237,8 +293,8 @@ estimate_transmission_flows_and_ci.default <- function(group_in,
 #'        individuals sampled per population group, 
 #' @param individuals_population_in A numeric vector of the estimated number 
 #'        of individuals per population group, 
-#' @param linkage_counts_in A data.frame of counts of identified/observed 
-#'        linked pairs per population group pairing. \cr
+#' @param linkage_counts_in A data.frame of counts of linked pairs identified 
+#'        between samples of each population group pairing of interest. \cr
 #'        The data.frame should contain the following three fields: 
 #' 	   \itemize{
 #' 	       \item H1_group (character) Name of population group 1 
@@ -281,13 +337,19 @@ estimate_transmission_flows_and_ci.default <- function(group_in,
 #' 
 #' @references
 #' \enumerate{
-#' 	\item Ratmann, O., et al., Inferring HIV-1 transmission networks and sources of 
-#' 		  epidemic spread in Africa with deep-sequence phylogenetic analysis. 
-#' 		  Nature Communications, 2019. 10(1): p. 1411.
 #'
-#' 	\item Wymant, C., et al., PHYLOSCANNER: Inferring Transmission from Within- and
-#' 		  Between-Host Pathogen Genetic Diversity. Molecular Biology and Evolution,
-#' 		  2017. 35(3): p. 719-733.
+#' \item Magosi LE, et al., Deep-sequence phylogenetics to quantify patterns of 
+#'       HIV transmission in the context of a universal testing and treatment
+#'       trial – BCPP/ Ya Tsie trial. To submit for publication, 2021.
+#' 
+#' \item Ratmann, O., et al., Inferring HIV-1 transmission networks and 
+#'       sources of epidemic spread in Africa with deep-sequence phylogenetic 
+#'       analysis. Nature Communications, 2019. 10(1): p. 1411.
+#' 
+#' \item Wymant, C., et al., PHYLOSCANNER: Inferring Transmission from Within 
+#'       and Between-Host Pathogen Genetic Diversity. Molecular Biology and 
+#'       Evolution, 2017. 35(3): p. 719-733.
+#'   
 #' }
 #' 
 #' @examples 
@@ -413,9 +475,18 @@ prep_p_hat.default <- function(group_in,
 #' @seealso See \code{\link{prep_p_hat}} to prepare input data to estimate \code{p_hat} 
 #' 
 #' @references
-#' Carnegie, N.B., et al., Linkage of viral sequences among HIV-infected village residents 
-#' in Botswana: estimation of linkage rates in the presence of missing data. PLoS Computational 
-#' Biology, 2014. 10(1): p. e1003430.
+#' \enumerate{
+#'
+#' \item Magosi LE, et al., Deep-sequence phylogenetics to quantify patterns of 
+#'       HIV transmission in the context of a universal testing and treatment
+#'       trial – BCPP/ Ya Tsie trial. To submit for publication, 2021.
+#' 
+#' \item Carnegie, N.B., et al., Linkage of viral sequences among HIV-infected
+#' 	     village residents in Botswana: estimation of linkage rates in the 
+#' 	     presence of missing data. PLoS Computational Biology, 2014. 10(1): 
+#' 	     p. e1003430.
+#'
+#'}
 #'
 #' @examples 
 #' library(bumblebee)
@@ -498,15 +569,19 @@ estimate_p_hat.default <- function(df_counts, ...) {
 #'              pairing and linked.
 #' 
 #' @details For a population group pairing \eqn{(u,v)}, the joint probability that a pair
-#'          is from groups \eqn{(u,v)} and is linked, \code{prob_group_pairing_and_linked} 
-#'          is computed as \deqn{(N_uv / N_choose_2) * p_hat_uv}.
-#'          Where,
-#'          \itemize{
-#'          \item N_uv = N_u * N_v: maximum distinct possible \eqn{(u,v)} pairs in population
-#'          \item p_hat_uv: probability of linkage between two individuals randomly sampled 
-#'                from groups \eqn{u} and \eqn{v}
-#'          \item N choose 2 or (N * (N - 1))/2 : all distinct possible pairs in population}.
-#'          See bumblebee website for more details \url{https://magosil86.github.io/bumblebee}.
+#'          is from groups \eqn{(u,v)} and is linked is computed as
+#' 
+#' \deqn{(N_uv / N_choose_2) * p_hat_uv ,}
+#'
+#' where,
+#' \itemize{
+#'     \item N_uv = N_u * N_v: maximum distinct possible \eqn{(u,v)} pairs in population
+#'     \item p_hat_uv: probability of linkage between two individuals randomly sampled 
+#'       from groups \eqn{u} and \eqn{v}
+#'     \item N choose 2 or (N * (N - 1))/2 : all distinct possible pairs in population.
+#' }
+#'
+#' See bumblebee website for more details \url{https://magosil86.github.io/bumblebee}.
 #' 
 #' @aliases prob_group_pairing_and_linked estimate_prob_group_pairing_and_linked
 #' 
@@ -534,9 +609,18 @@ estimate_p_hat.default <- function(df_counts, ...) {
 #' @seealso See \code{\link{estimate_p_hat}} to prepare input data to estimate \code{prob_group_pairing_and_linked}
 #' 
 #' @references
-#' Carnegie, N.B., et al., Linkage of viral sequences among HIV-infected village residents 
-#' in Botswana: estimation of linkage rates in the presence of missing data. PLoS Computational 
-#' Biology, 2014. 10(1): p. e1003430.
+#' \enumerate{
+#'
+#' \item Magosi LE, et al., Deep-sequence phylogenetics to quantify patterns of 
+#'       HIV transmission in the context of a universal testing and treatment
+#'       trial – BCPP/ Ya Tsie trial. To submit for publication, 2021.
+#' 
+#' \item Carnegie, N.B., et al., Linkage of viral sequences among HIV-infected
+#' 	     village residents in Botswana: estimation of linkage rates in the 
+#' 	     presence of missing data. PLoS Computational Biology, 2014. 10(1): 
+#' 	     p. e1003430.
+#'
+#'}
 #'
 #' @examples 
 #' library(bumblebee)
@@ -623,17 +707,15 @@ estimate_prob_group_pairing_and_linked.default <- function(df_counts_and_p_hat,
 #' 
 #' @details For a population group pairing \eqn{(u,v)}, the estimated transmission flows
 #'          within and between population groups \eqn{u} and \eqn{v}, are represented by
-#'          the vector         
-#' 
-#'          \deqn{\hat{theta} = (\hat{theta_{uu}}, \hat{theta_{uv}}, \hat{theta_{vu}}, \hat{theta_{vv}})},
-#'          
-#'          and are computed as
-#'                                  
-#'          \deqn{\hat{\theta_{ij}} = Pr(pair from groups (i,j) | pair is linked), where i = u,v and j = u,v},
+#'          the vector theta_hat,
 #'
-#'          \deqn{\hat{theta_{ij}} = \frac{N_{ij}p_{ij}}{ \sum_m \sum_{n \ge m}N_{mn}p_{mn}}, where i = u,v and j = u,v}.
-#'  
-#'          See bumblebee website for more details \url{https://magosil86.github.io/bumblebee}.
+#' \deqn{\hat{\theta} = ( \hat{\theta}_{uu}, \hat{\theta}_{uv}, \hat{\theta}_{vu}, \hat{\theta}_{vv} ) ,}        
+#' 
+#' and are computed as \deqn{\hat{\theta_{ij}} = Pr(pair from groups (i,j) | pair is linked), where i = u,v and j = u,v ,}
+#'                         
+#' \deqn{\hat{\theta_{ij}} = \frac{N_{ij}p_{ij}}{ \sum_m \sum_{n \ge m}N_{mn}p_{mn}}, where i = u,v and j = u,v ,}
+#' 
+#' See bumblebee website for more details \url{https://magosil86.github.io/bumblebee}.
 #' 
 #' @aliases theta_hat est_theta_hat estim_theta_hat estimate_theta_hat
 #' 
@@ -660,9 +742,18 @@ estimate_prob_group_pairing_and_linked.default <- function(df_counts_and_p_hat,
 #' @seealso See \code{\link{estimate_p_hat}} to prepare input data to estimate \code{theta_hat}
 #' 
 #' @references
-#' Carnegie, N.B., et al., Linkage of viral sequences among HIV-infected village residents 
-#' in Botswana: estimation of linkage rates in the presence of missing data. PLoS Computational 
-#' Biology, 2014. 10(1): p. e1003430.
+#' \enumerate{
+#'
+#' \item Magosi LE, et al., Deep-sequence phylogenetics to quantify patterns of 
+#'       HIV transmission in the context of a universal testing and treatment
+#'       trial – BCPP/ Ya Tsie trial. To submit for publication, 2021.
+#' 
+#' \item Carnegie, N.B., et al., Linkage of viral sequences among HIV-infected
+#' 	     village residents in Botswana: estimation of linkage rates in the 
+#' 	     presence of missing data. PLoS Computational Biology, 2014. 10(1): 
+#' 	     p. e1003430.
+#'
+#'}
 #'
 #' @examples 
 #' library(bumblebee)
@@ -746,9 +837,18 @@ estimate_theta_hat.default <- function(df_counts_and_p_hat, ...) {
 #' @seealso See \code{\link{estimate_p_hat}} to prepare input data to estimate \code{c_hat}
 #'  
 #' @references
-#' Carnegie, N.B., et al., Linkage of viral sequences among HIV-infected village residents 
-#' in Botswana: estimation of linkage rates in the presence of missing data. PLoS Computational 
-#' Biology, 2014. 10(1): p. e1003430.
+#' \enumerate{
+#'
+#' \item Magosi LE, et al., Deep-sequence phylogenetics to quantify patterns of 
+#'       HIV transmission in the context of a universal testing and treatment
+#'       trial – BCPP/ Ya Tsie trial. To submit for publication, 2021.
+#' 
+#' \item Carnegie, N.B., et al., Linkage of viral sequences among HIV-infected
+#' 	     village residents in Botswana: estimation of linkage rates in the 
+#' 	     presence of missing data. PLoS Computational Biology, 2014. 10(1): 
+#' 	     p. e1003430.
+#'
+#'}
 #' 
 #' @examples 
 #' library(bumblebee)
@@ -805,8 +905,8 @@ estimate_c_hat.default <- function(df_counts_and_p_hat, ...) {
 #' 
 #' @description This function computes simultaneous confidence intervals at the
 #'              5% significance level for estimated transmission flows. Available
-#'              methods for computing confidence intervals are: Goodman, Sison-Glaz
-#'              and Queensbury-Hurst.
+#'              methods for computing confidence intervals are: Goodman, Goodman
+#'              with a continuity correction, Sison-Glaz and Queensbury-Hurst.
 #'              
 #' @aliases estimate_multinom_ci estim_multinom_ci est_multinom_ci
 #' 
@@ -865,9 +965,17 @@ estimate_c_hat.default <- function(df_counts_and_p_hat, ...) {
 #' 
 #' @references
 #' \enumerate{
+#'
+#'    \item Magosi LE, et al., Deep-sequence phylogenetics to quantify patterns of 
+#'       HIV transmission in the context of a universal testing and treatment
+#'       trial – BCPP/ Ya Tsie trial. To submit for publication, 2021.
 #' 
 #'    \item Goodman, L. A. On Simultaneous Confidence Intervals for Multinomial Proportions 
 #' 		 Technometrics, 1965. 7, 247-254.
+#' 
+#'    \item Cherry, S., A Comparison of Confidence Interval Methods for Habitat 
+#'       Use-Availability Studies. The Journal of Wildlife Management, 1996. 
+#'       60(3): p. 653-658.
 #' 
 #'    \item Sison, C.P and Glaz, J. Simultaneous confidence intervals and sample size determination
 #' 		 for multinomial proportions. Journal of the American Statistical Association, 

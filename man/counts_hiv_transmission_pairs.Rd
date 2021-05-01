@@ -23,13 +23,12 @@ intervention and control communities in the 30-community BCPP/Ya Tsie
 HIV prevention trial in Botswana (2013-2018). The Botswana -Ya Tsie
 trial was a pair-matched community randomized trial that evaluated
 the effect of a universal HIV test and treat intervention in reducing
-population-level incidence. For further details see:
+population-level incidence. For further details see references and:
 \url{https://magosil86.github.io/bumblebee}.
 }
 \references{
-Magosi LE, Yinfeng Z, Golubchick T, De Gruttola V, ..., Lockman S, Essex M, Lipsitch M,
-on behalf of the Botswana Combination Prevention Project and the PANGEA consortium (2021)
-Deep-sequence phylogenetics to quantify patterns of HIV transmission in the context of a
-universal testing and treatment trial – BCPP/ Ya Tsie trial. To submit for publication.
+Magosi LE, et al., Deep-sequence phylogenetics to quantify patterns of
+HIV transmission in the context of a universal testing and treatment
+trial – BCPP/ Ya Tsie trial. To submit for publication, 2021.
 }
 \keyword{datasets}

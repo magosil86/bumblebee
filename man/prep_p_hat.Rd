@@ -35,8 +35,8 @@ individuals sampled per population group,}
 \item{individuals_population_in}{A numeric vector of the estimated number
 of individuals per population group,}
 
-\item{linkage_counts_in}{A data.frame of counts of identified/observed
-linked pairs per population group pairing. \cr
+\item{linkage_counts_in}{A data.frame of counts of linked pairs identified
+between samples of each population group pairing of interest. \cr
 The data.frame should contain the following three fields:
 \itemize{
 \item H1_group (character) Name of population group 1
@@ -122,12 +122,18 @@ results_prep_p_hat
 }
 \references{
 \enumerate{
-\item Ratmann, O., et al., Inferring HIV-1 transmission networks and sources of
-epidemic spread in Africa with deep-sequence phylogenetic analysis.
-Nature Communications, 2019. 10(1): p. 1411.\preformatted{\\item Wymant, C., et al., PHYLOSCANNER: Inferring Transmission from Within- and
-	  Between-Host Pathogen Genetic Diversity. Molecular Biology and Evolution,
-	  2017. 35(3): p. 719-733.
-}
+
+\item Magosi LE, et al., Deep-sequence phylogenetics to quantify patterns of
+HIV transmission in the context of a universal testing and treatment
+trial – BCPP/ Ya Tsie trial. To submit for publication, 2021.
+
+\item Ratmann, O., et al., Inferring HIV-1 transmission networks and
+sources of epidemic spread in Africa with deep-sequence phylogenetic
+analysis. Nature Communications, 2019. 10(1): p. 1411.
+
+\item Wymant, C., et al., PHYLOSCANNER: Inferring Transmission from Within
+and Between-Host Pathogen Genetic Diversity. Molecular Biology and
+Evolution, 2017. 35(3): p. 719-733.
 
 }
 }

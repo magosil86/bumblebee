@@ -53,7 +53,7 @@ utils::globalVariables(c("est", "lwr.ci", "num_linked_pairs_observed", "upr.ci")
 #   group_in                  (character) A vector indicating population groups/strata (e.g. communities, age-groups, genders or trial arms) between which transmission flows will be evaluated, 
 #   individuals_sampled_in    (numeric)   A vector indicating the number of individuals sampled per population group, 
 #   individuals_population_in (numeric)   A vector of the estimated number of individuals per population group, 
-#   linkage_counts_in                     A data.frame of counts of identified/observed linked pairs per population group pairing.
+#   linkage_counts_in                     A data.frame of counts of linked pairs identified between samples of each population pairing of interest.
 #                                         The data.frame should contain the following three fields: H1_group (character), H2_group (character), number_linked_pairs_observed (numeric).
 #                                         For a population group pairing, H1_group and H2_group denote population groups 1 and 2 respectively; and number_linked_pairs_observed denotes 
 #                                         the number of observed directed transmission pairs between samples from population groups 1 and 2.
@@ -120,14 +120,78 @@ estimate_transmission_flows <- function(group_in,
 	# Reminder! p_hat denotes the probability that pathogen sequences from two individuals randomly sampled from their
 	#           respective population groups are linked.
 
-	results_prepare_input_for_get_p_hat <- prepare_input_for_get_p_hat(group_in, 
-																	   individuals_sampled_in, 
-																	   individuals_population_in, 
-																	   linkage_counts_in, 
-																	   verbose_output)
+	results_prepare_input_for_get_p_hat <- tryCatch({
+	    
+	    # Condition: Try and execute function prepare_input_for_get_p_hat() a.k.a prep_p_hat()
+	   
+	    if (verbose_output) message("Executing function: prep_p_hat(). \n")
+	    
+		prepare_input_for_get_p_hat(group_in, 
+								    individuals_sampled_in, 
+								    individuals_population_in, 
+								    linkage_counts_in, 
+								    verbose_output)
+	    
+	
+	    },
+	
+	    # Condition handler: If an error condition occurs:
+	    
+	    error = function(condition) {
+	    
+	        message("Execution of function: prep_p_hat() failed. \n")
+	        
+	        conditionMessage(condition)
+	        
+	        message("See ?prep_p_hat() to execute step separately for debugging. \n")
+	        
+	        # Exit function rather than chug-along
+	        # return(NULL)
+	        stop(condition)	        
+	        
+	    },
+
+        # Statements to execute at the end regardless of success or error.
+	    
+	    finally = NULL
+	
+	)
+
 
 	# Calculate p_hat
-	results_get_p_hat <- get_p_hat(results_prepare_input_for_get_p_hat)
+
+	results_get_p_hat <- tryCatch({
+	    
+	    # Condition: Try and execute function get_p_hat() a.k.a estimate_p_hat()
+	   
+	    if (verbose_output) message("Executing function: estimate_p_hat(). \n")
+	    
+        get_p_hat(results_prepare_input_for_get_p_hat)	    
+	
+	    },
+	
+	    # Condition handler: If an error condition occurs:
+	    
+	    error = function(condition) {
+	    
+	        message("Execution of function: estimate_p_hat() failed. \n")
+	        
+	        conditionMessage(condition)
+	        
+	        message("See ?estimate_p_hat() to execute step separately for debugging. \n")
+	        
+	        # Exit function rather than chug-along
+	        # return(NULL)
+	        stop(condition)	        
+	        
+	    },
+
+        # Statements to execute at the end regardless of success or error.
+	    
+	    finally = NULL
+	
+	)
+
 
 
 	if (detailed_report) {
@@ -135,29 +199,215 @@ estimate_transmission_flows <- function(group_in,
 
 		# Calculate the probability that a pair of pathogen sequences is from a specific 
 		# population group pairing and is linked
-		results_get_prob_group_pairing_and_linked <- get_prob_group_pairing_and_linked(results_get_p_hat, individuals_population_in, verbose_output)
+
+		results_get_prob_group_pairing_and_linked <- tryCatch({
+		
+			# Condition: Try and execute function get_prob_group_pairing_and_linked() a.k.a estimate_prob_group_pairing_and_linked()
+	   
+			if (verbose_output) message("Executing function: estimate_prob_group_pairing_and_linked(). \n")
+		
+			get_prob_group_pairing_and_linked(results_get_p_hat, individuals_population_in, verbose_output)	    
+	
+			},
+	
+			# Condition handler: If an error condition occurs:
+		
+			error = function(condition) {
+		
+				message("Execution of function: estimate_prob_group_pairing_and_linked() failed. \n")
+			
+				conditionMessage(condition)
+			
+				message("See ?estimate_prob_group_pairing_and_linked() to execute step separately for debugging. \n")
+			
+				# Exit function rather than chug-along
+				# return(NULL)
+				stop(condition)	        
+			
+			},
+
+			# Statements to execute at the end regardless of success or error.
+		
+			finally = NULL
+	
+		)
 
 		# Calculate theta_hat, the probability that a pair of pathogen sequences is from 
 		# a specific population group pairing given that the pair is linked
-		results_get_theta_hat <- get_theta_hat(results_get_prob_group_pairing_and_linked)
+
+		results_get_theta_hat <- tryCatch({
+		
+			# Condition: Try and execute function get_theta_hat() a.k.a estimate_theta_hat()
+	   
+			if (verbose_output) message("Executing function: estimate_theta_hat(). \n")
+		
+			get_theta_hat(results_get_prob_group_pairing_and_linked)	    
+	
+			},
+	
+			# Condition handler: If an error condition occurs:
+		
+			error = function(condition) {
+		
+				message("Execution of function: estimate_theta_hat() failed. \n")
+			
+				conditionMessage(condition)
+			
+				message("See ?estimate_theta_hat() to execute step separately for debugging. \n")
+			
+				# Exit function rather than chug-along
+				# return(NULL)
+				stop(condition)	        
+			
+			},
+
+			# Statements to execute at the end regardless of success or error.
+		
+			finally = NULL
+	
+		)
 
 		# Calculate c_hat, the probability that a randomly selected pathogen sequence 
 		# in one population group links to at least one pathogen sequence in another
 		# population group i.e. probability of clustering. This excludes linkage to 
 		# itself when clustering is estimated within populaton groups. 
-		results_get_c_hat <- get_c_hat(results_get_theta_hat)
+
+		results_get_c_hat <- tryCatch({
+		
+			# Condition: Try and execute function get_c_hat() a.k.a estimate_c_hat()
+	   
+			if (verbose_output) message("Executing function: estimate_c_hat(). \n")
+		
+			get_c_hat(results_get_theta_hat)	    
+	
+			},
+	
+			# Condition handler: If an error condition occurs:
+		
+			error = function(condition) {
+		
+				message("Execution of function: estimate_c_hat() failed. \n")
+			
+				conditionMessage(condition)
+			
+				message("See ?estimate_c_hat() to execute step separately for debugging. \n")
+			
+				# Exit function rather than chug-along
+				# return(NULL)
+				stop(condition)	        
+			
+			},
+
+			# Statements to execute at the end regardless of success or error.
+		
+			finally = NULL
+	
+		)
 
 		# Calculate simultaneous confidence intervals at the 5% significance level
-		output <- get_multinomial_proportion_conf_ints_extended(results_get_c_hat, detailed_report = TRUE)
+
+		output <- tryCatch({
+		
+			# Condition: Try and execute function get_multinomial_proportion_conf_ints_extended() a.k.a estimate_multinom_ci()
+	   
+			if (verbose_output) message("Executing function: estimate_multinom_ci(). \n")
+		
+			get_multinomial_proportion_conf_ints_extended(results_get_c_hat, detailed_report = TRUE)	    
+	
+			},
+	
+			# Condition handler: If an error condition occurs:
+		
+			error = function(condition) {
+		
+				message("Execution of function: estimate_multinom_ci() failed. \n")
+			
+				conditionMessage(condition)
+			
+				message("See ?estimate_multinom_ci() to execute step separately for debugging. \n")
+			
+				# Exit function rather than chug-along
+				# return(NULL)
+				stop(condition)	        
+			
+			},
+
+			# Statements to execute at the end regardless of success or error.
+		
+			finally = NULL
+	
+		)
 
 	} else {
 
 		# Calculate theta_hat, the probability that a pair of pathogen sequences is from 
 		# a specific population group pairing given that the pair is linked
-		results_get_theta_hat <- get_theta_hat(results_get_p_hat)
+
+		results_get_theta_hat <- tryCatch({
+		
+			# Condition: Try and execute function get_theta_hat() a.k.a estimate_theta_hat()
+	   
+			if (verbose_output) message("Executing function: estimate_theta_hat(). \n")
+		
+			results_get_theta_hat <- get_theta_hat(results_get_p_hat)	    
+	
+			},
+	
+			# Condition handler: If an error condition occurs:
+		
+			error = function(condition) {
+		
+				message("Execution of function: estimate_theta_hat() failed. \n")
+			
+				conditionMessage(condition)
+			
+				message("See ?estimate_theta_hat() to execute step separately for debugging. \n")
+			
+				# Exit function rather than chug-along
+				# return(NULL)
+				stop(condition)	        
+			
+			},
+
+			# Statements to execute at the end regardless of success or error.
+		
+			finally = NULL
+	
+		)
 
 		# Calculate simultaneous confidence intervals at the 5% significance level with the Goodman method
-		output <- get_multinomial_proportion_conf_ints_extended(results_get_theta_hat, detailed_report = FALSE)
+
+		output <- tryCatch({
+		
+			# Condition: Try and execute function get_multinomial_proportion_conf_ints_extended() a.k.a estimate_multinom_ci()
+	   
+			if (verbose_output) message("Executing function: estimate_multinom_ci(). \n")
+		
+			get_multinomial_proportion_conf_ints_extended(results_get_theta_hat, detailed_report = FALSE)	    
+	
+			},
+	
+			# Condition handler: If an error condition occurs:
+		
+			error = function(condition) {
+		
+				message("Execution of function: estimate_multinom_ci() failed. \n")
+			
+				conditionMessage(condition)
+			
+				message("See ?estimate_multinom_ci() to execute step separately for debugging. \n")
+			
+				# Exit function rather than chug-along
+				# return(NULL)
+				stop(condition)	        
+			
+			},
+
+			# Statements to execute at the end regardless of success or error.
+		
+			finally = NULL
+	
+		)
 
 	}
 
@@ -181,7 +431,7 @@ estimate_transmission_flows <- function(group_in,
 #   group_in                  (character) A vector indicating population groups/strata (e.g. communities, age-groups, genders or trial arms) between which transmission flows will be evaluated, 
 #   individuals_sampled_in    (numeric)   A vector indicating the number of individuals sampled per population group, 
 #   individuals_population_in (numeric)   A vector of the estimated number of individuals per population group, 
-#   linkage_counts_in                     A data.frame of counts of identified/observed linked pairs per population group pairing.
+#   linkage_counts_in                     A data.frame of counts of linked pairs identified between samples of each population pairing of interest.
 #                                         The data.frame should contain the following three fields: H1_group (character), H2_group (character), number_linked_pairs_observed (numeric).
 #                                         For a population group pairing, H1_group and H2_group denote population groups 1 and 2 respectively; 
 #                                         and number_linked_pairs_observed denotes the number of observed directed transmission pairs between samples from population groups 1 and 2.

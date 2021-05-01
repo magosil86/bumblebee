@@ -56,4 +56,9 @@ estimated_hiv_transmission_flows
 Estimated HIV transmissions within and betweeen intervention and control communities
 in the BCPP/Ya Tsie trial population adjusted for variability in sampling.
 }
+\references{
+Magosi LE, et al., Deep-sequence phylogenetics to quantify patterns of
+HIV transmission in the context of a universal testing and treatment
+trial – BCPP/ Ya Tsie trial. To submit for publication, 2021.
+}
 \keyword{datasets}

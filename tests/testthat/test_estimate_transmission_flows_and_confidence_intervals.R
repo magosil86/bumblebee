@@ -3,10 +3,9 @@
 ### see also:
 ###     https://magosil86.github.io/bumblebee/
 ###
-###    Magosi LE, Yinfeng Z, Golubchick T, De Gruttola V, ..., Lipsitch M, on behalf of the 
-###    Botswana Combination Prevention Project and the PANGEA consortium (2021) Deep-sequence
-###    phylogenetics to quantify patterns of HIV transmission in the context of a universal 
-###    testing and treatment trial – BCPP/ Ya Tsie trial. To submit for publication.
+### Magosi LE, et al., Deep-sequence phylogenetics to quantify patterns of 
+### HIV transmission in the context of a universal testing and treatment
+### trial – BCPP/ Ya Tsie trial. To submit for publication, 2021.
 
 
 ### context("Checking bumblebee example: Estimate transmission flows and confidence intervals ")

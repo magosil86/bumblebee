@@ -5,7 +5,7 @@
 #' HIV prevention trial in Botswana (2013-2018). The Botswana -Ya Tsie 
 #' trial was a pair-matched community randomized trial that evaluated
 #' the effect of a universal HIV test and treat intervention in reducing
-#' population-level incidence. For further details see:
+#' population-level incidence. For further details see references and:
 #' \url{https://magosil86.github.io/bumblebee}.
 #' 
 #' @format A data frame:
@@ -15,10 +15,10 @@
 #' 	\item{num_linked_pairs_observed}{Number of observed directed transmission pairs between samples from population groups 1 and 2}}
 #' 
 #' @references
-#' Magosi LE, Yinfeng Z, Golubchick T, De Gruttola V, ..., Lockman S, Essex M, Lipsitch M, 
-#' on behalf of the Botswana Combination Prevention Project and the PANGEA consortium (2021) 
-#' Deep-sequence phylogenetics to quantify patterns of HIV transmission in the context of a 
-#' universal testing and treatment trial – BCPP/ Ya Tsie trial. To submit for publication.
+#' Magosi LE, et al., Deep-sequence phylogenetics to quantify patterns of 
+#' HIV transmission in the context of a universal testing and treatment
+#' trial – BCPP/ Ya Tsie trial. To submit for publication, 2021.
+#' 
 #'
 #' @source \url{https://magosil86.github.io/bumblebee}
 #'
@@ -27,7 +27,7 @@
 #' Sampling fequency
 #' 
 #' Estimated number of individuals with HIV in intervention and control communities 
-#' of the BCPP/Ya Tsie trial and the number of individuals sampled from each for 
+#' of the BCPP/Ya Tsie trial, and the number of individuals sampled from each for 
 #' HIV viral phylogenetic analysis.
 #' 
 #' @format A data frame:
@@ -36,6 +36,11 @@
 #' \item{number_sampled}{Number of individuals sampled per population group}
 #' \item{number_population}{Estimated number of individuals in each population group}
 #' }
+#' 
+#' @references
+#' Magosi LE, et al., Deep-sequence phylogenetics to quantify patterns of 
+#' HIV transmission in the context of a universal testing and treatment
+#' trial – BCPP/ Ya Tsie trial. To submit for publication, 2021.
 #'
 #' @source \url{https://magosil86.github.io/bumblebee}
 #'
@@ -86,6 +91,11 @@
 #'     \item{lwr_ci_qhurst_adj_coinmind}{Lower bound of Queensbury-Hurst confidence interval adjusted} 
 #'     \item{upr_ci_qhurst_adj_coinmind}{Upper bound of Queensbury-Hurst confidence interval adjusted}
 #' }
+#' 
+#' @references
+#' Magosi LE, et al., Deep-sequence phylogenetics to quantify patterns of 
+#' HIV transmission in the context of a universal testing and treatment
+#' trial – BCPP/ Ya Tsie trial. To submit for publication, 2021.
 #'
 #' @source \url{https://magosil86.github.io/bumblebee}
 #'

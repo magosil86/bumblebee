@@ -91,9 +91,18 @@ results_estimate_p_hat
 
 }
 \references{
-Carnegie, N.B., et al., Linkage of viral sequences among HIV-infected village residents
-in Botswana: estimation of linkage rates in the presence of missing data. PLoS Computational
-Biology, 2014. 10(1): p. e1003430.
+\enumerate{
+
+\item Magosi LE, et al., Deep-sequence phylogenetics to quantify patterns of
+HIV transmission in the context of a universal testing and treatment
+trial – BCPP/ Ya Tsie trial. To submit for publication, 2021.
+
+\item Carnegie, N.B., et al., Linkage of viral sequences among HIV-infected
+village residents in Botswana: estimation of linkage rates in the
+presence of missing data. PLoS Computational Biology, 2014. 10(1):
+p. e1003430.
+
+}
 }
 \seealso{
 See \code{\link{prep_p_hat}} to prepare input data to estimate \code{p_hat}

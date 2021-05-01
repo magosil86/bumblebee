@@ -10,16 +10,17 @@ vignette: >
 ---
 
 
+![](https://user-images.githubusercontent.com/8364031/116549613-b4c79580-a8c3-11eb-9415-1330f491e6a0.png){width=95%}
 
 ## Background
 
-To control the spread of an infectious disease it is important to quantify the impact of
+To control the spread of infectious disease it is important to quantify the impact of
 interventions and factors such as: age, sex, socio-economic status and
 geographical location in shaping patterns of transmission.
 
-The bumblebee package uses counts of observed directed transmission pairs to estimate
-transmission flows within and between population groups accounting for variable 
-sampling among population groups. 
+The **_Bumblebee_** package uses counts of directed transmission pairs identified 
+between samples from population groups of interest to estimate the flow of transmissions 
+within and between those population groups accounting for sampling heterogeneity.
 
 Counts of observed directed transmission pairs can be obtained from deep-sequence 
 phylogenetic data (via [phyloscanner](https://github.com/BDI-pathogens/phyloscanner))
@@ -29,35 +30,20 @@ or known epidemiological contacts.
 next-generation sequence data.
 
 
-## Application
+### Example application areas include: 
 
-For example, the bumblebee package was used to better understand the patterns of 
-HIV transmssion, the virus that causes AIDS, in the context of a universal
-test-and-treat HIV prevention trial. More precisely, to quantify the flow of 
-HIV transmissions within and between: communities, age-groups, sexes, 
-geographical regions and randomized-HIV-intervention conditions in 
-the BCPP / Ya Tsie trial. 
-
-The BCPP / Ya Tsie trial was a 30-community pair-matched community randomized
-trial in Botswana to test the effect of a universal HIV test-and-treat intervention 
-in efficiently reducing the occurrence of new HIV infections at the population level.
-
-
-#### See a paper on the deep-sequence phylogenetic analysis of the BCPP / Ya Tsie trial to learn more:
-
-Magosi LE, Yinfeng Z, Golubchick T, De Gruttola V, ..., Lockman S, Essex M, Lipsitch M, 
-on behalf of the Botswana Combination Prevention Project and the PANGEA consortium (2021) 
-Deep-sequence phylogenetics to quantify patterns of HIV transmission in the context of a 
-universal testing and treatment trial – BCPP/ Ya Tsie trial. To submit for publication.
+1. Quantifying transmission patterns of HIV, the virus that causes AIDS, in the 
+   context of HIV prevention initiatives such as universal test-and-treat. 
+   
+   **To learn more see:** Magosi LE, et al., Deep-sequence phylogenetics to 
+   quantify patterns of HIV transmission in the context of a universal testing 
+   and treatment trial – BCPP/ Ya Tsie trial. To submit for publication, 2021.
+ 
+2. Quantifying transmission patterns of SARS-COV-2, the virus that causes COVID-19, 
+   in the presence of heterogeneous vaccine uptake.
 
 
-#### Other applications
-Another example scenario in which the bumblebee package might be useful would be to
-better understand patterns of transmission of SARS-COV-2, the virus that causes
-COVID-19, in the context of differential access to vaccines.
-
-#### This vignette walks through the steps for quantifying transmission flows within and between population groups
-
+#### This vignette walks through the steps to estimate transmission flows and confidence intervals.
  
 ---
 
@@ -66,48 +52,57 @@ COVID-19, in the context of differential access to vaccines.
 ```
 
 We shall use the data of HIV transmissions within and between intervention and control
-communities in the BCPP/Ya Tsie HIV prevention trial. To learn more about the data: 
+communities in the BCPP/Ya Tsie HIV prevention trial. 
 
+The BCPP / Ya Tsie study was a pair-matched community-randomized trial involving
+30 communities in Botswana to test the effect of a universal HIV test-and-treat 
+intervention in efficiently reducing the occurrence of new HIV infections at the 
+population level.
+
+To learn more about the data: 
+
+# Counts of directed HIV transmission pairs identified between samples from
+# intervention and control communities.
 ?counts_hiv_transmission_pairs, 
 
+# Estimated number of individuals with HIV in intervention and control
+# communities and the number of individuals sampled from each.
 ?sampling_frequency  
 
+# Estimated transmission flows or relative probability of transmission
+# within and between population groups adjusted for variable sampling
+# among the population groups. 
+# Note: The `theta_hat` variable denotes estimated transmission flows.
 ?estimated_hiv_transmission_flows
  
-The input data comprises counts of observed directed HIV transmission pairs between  
-individuals sampled from intervention and control communities (i.e. num_linked_pairs_observed); 
-sampling information; and the estimated HIV transmissions within and between intervention 
-and control communities in the BCPP/Ya Tsie trial population adjusted for sampling 
-heterogeneity (i.e. est_linkedpairs_in_population).
-
 ```
 
 #### The data was sourced from:
 
-Magosi LE, Yinfeng Z, Golubchick T, De Gruttola V, ..., Lockman S, Essex M, Lipsitch M, 
-on behalf of the Botswana Combination Prevention Project and the PANGEA consortium (2021) 
-Deep-sequence phylogenetics to quantify patterns of HIV transmission in the context of a 
-universal testing and treatment trial – BCPP/ Ya Tsie trial. To submit for publication.
-
+Magosi LE, et al., Deep-sequence phylogenetics to quantify patterns of 
+HIV transmission in the context of a universal testing and treatment
+trial – BCPP/ Ya Tsie trial. To submit for publication, 2021.
 
 
 ## A basic analysis: Estimating transmission flows within and between population groups
 
 We shall use the `estimate_transmission_flows_and_ci()` function to estimate transmission 
 flows and corresponding confidence intervals within and between intervention and control 
-communities of the BCPP / Ya Tsie trial. 
+communities of the BCPP / Ya Tsie trial.  See `?estimate_transmission_flows_and_ci()` to
+learn more about the function.
 
 The `estimate_transmission_flows_and_ci()` function 
 requires the following inputs for analysis:
 
 * A character vector of population groups/strata (e.g. communities, age-groups, genders or trial arms) 
-  between which to estimate transmission flows
+  between which to estimate transmission flows.
  
 * A numeric vector indicating the number of individuals sampled per population group 
 
 * A numeric vector of the estimated number of individuals per population group 
 
-* A data.frame of counts of observed directed transmission pairs per population group pairing
+* A data.frame of counts of directed transmission pairs identified between samples 
+  from population groups of interest.
 
 
 ```
@@ -139,12 +134,15 @@ sampling_frequency
 
 results_estimate_transmission_flows_and_ci <- estimate_transmission_flows_and_ci(
     group_in = sampling_frequency$population_group, 
-    individuals_sampled_in = sampling_frequency$number_sampled, 
-    individuals_population_in = sampling_frequency$number_population, 
-    linkage_counts_in = counts_hiv_transmission_pairs)
+	individuals_sampled_in = sampling_frequency$number_sampled, 
+	individuals_population_in = sampling_frequency$number_population, 
+	linkage_counts_in = counts_hiv_transmission_pairs)
  
 # View results
 results_estimate_transmission_flows_and_ci
+
+# Retrieve dataset of estimated transmission flows 
+dframe <- results_estimate_transmission_flows_and_ci$flows_dataset
 
 ```
 
@@ -153,9 +151,9 @@ results_estimate_transmission_flows_and_ci
 The `theta_hat` variable denotes estimated proportions of HIV transmissions in 
 the trial population within and between intervention and control communities.
 There was substantial sexual mixing between intervention and control communities.
-Transmissions into control communities from interventions communities were rarer
-than the reverse, compatible with a benefit from the universal HIV test-and-treat
-intervention.
+Transmissions into intervention communities from control communities were three
+times more common than the reverse, compatible with a benefit from the universal 
+HIV test-and-treat intervention.
 
 #### See `?estimate_transmission_flows_and_ci()` for a description of all the output variables
 
@@ -170,11 +168,12 @@ Further to estimating transmission flows, the bumblebee package provides estimat
 * p_hat, the probability of linkage between pathogen sequences from two individuals randomly 
   sampled from their respective population groups
 
-* p_group_pairing_linked, the joint probability that a pair of pathogen sequences is from a specific population group
-  pairing and linked
+* p_group_pairing_linked, the joint probability that a pair of pathogen sequences is 
+  from a specific population group pairing and linked
 
-* c_hat, the probability of clustering, more precisely, the probability that a pathogen sequence
-  from one population group links with at least one pathogen sequence from another population group
+* c_hat, the probability of clustering, more precisely, the probability that a pathogen 
+  sequence from one population group links with at least one pathogen sequence from 
+  another population group
 
 
 and confidence intervals for the following methods: 
@@ -204,5 +203,7 @@ results_estimate_transmission_flows_and_ci_detailed <- estimate_transmission_flo
 # View results
 results_estimate_transmission_flows_and_ci_detailed
 
-```
+# Retrieve dataset of estimated transmission flows 
+dframe <- results_estimate_transmission_flows_and_ci_detailed$flows_dataset
 
+```

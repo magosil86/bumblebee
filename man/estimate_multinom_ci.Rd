@@ -65,8 +65,8 @@ The following additional fields are returned if the detailed_report flag is set
 \description{
 This function computes simultaneous confidence intervals at the
 5\% significance level for estimated transmission flows. Available
-methods for computing confidence intervals are: Goodman, Sison-Glaz
-and Queensbury-Hurst.
+methods for computing confidence intervals are: Goodman, Goodman
+with a continuity correction, Sison-Glaz and Queensbury-Hurst.
 }
 \section{Methods (by class)}{
 \itemize{
@@ -117,8 +117,16 @@ results_estimate_multinom_ci_detailed
 \references{
 \enumerate{
 
+\item Magosi LE, et al., Deep-sequence phylogenetics to quantify patterns of
+HIV transmission in the context of a universal testing and treatment
+trial – BCPP/ Ya Tsie trial. To submit for publication, 2021.
+
 \item Goodman, L. A. On Simultaneous Confidence Intervals for Multinomial Proportions
 Technometrics, 1965. 7, 247-254.
+
+\item Cherry, S., A Comparison of Confidence Interval Methods for Habitat
+Use-Availability Studies. The Journal of Wildlife Management, 1996.
+60(3): p. 653-658.
 
 \item Sison, C.P and Glaz, J. Simultaneous confidence intervals and sample size determination
 for multinomial proportions. Journal of the American Statistical Association,

@@ -52,14 +52,18 @@ pairing and linked.
 }
 \details{
 For a population group pairing \eqn{(u,v)}, the joint probability that a pair
-is from groups \eqn{(u,v)} and is linked, \code{prob_group_pairing_and_linked}
-is computed as \deqn{(N_uv / N_choose_2) * p_hat_uv}.
-Where,
+is from groups \eqn{(u,v)} and is linked is computed as
+
+\deqn{(N_uv / N_choose_2) * p_hat_uv ,}
+
+where,
 \itemize{
 \item N_uv = N_u * N_v: maximum distinct possible \eqn{(u,v)} pairs in population
 \item p_hat_uv: probability of linkage between two individuals randomly sampled
 from groups \eqn{u} and \eqn{v}
-\item N choose 2 or (N * (N - 1))/2 : all distinct possible pairs in population}.
+\item N choose 2 or (N * (N - 1))/2 : all distinct possible pairs in population.
+}
+
 See bumblebee website for more details \url{https://magosil86.github.io/bumblebee}.
 }
 \section{Methods (by class)}{
@@ -100,9 +104,18 @@ results_prob_group_pairing_and_linked
 
 }
 \references{
-Carnegie, N.B., et al., Linkage of viral sequences among HIV-infected village residents
-in Botswana: estimation of linkage rates in the presence of missing data. PLoS Computational
-Biology, 2014. 10(1): p. e1003430.
+\enumerate{
+
+\item Magosi LE, et al., Deep-sequence phylogenetics to quantify patterns of
+HIV transmission in the context of a universal testing and treatment
+trial – BCPP/ Ya Tsie trial. To submit for publication, 2021.
+
+\item Carnegie, N.B., et al., Linkage of viral sequences among HIV-infected
+village residents in Botswana: estimation of linkage rates in the
+presence of missing data. PLoS Computational Biology, 2014. 10(1):
+p. e1003430.
+
+}
 }
 \seealso{
 See \code{\link{estimate_p_hat}} to prepare input data to estimate \code{prob_group_pairing_and_linked}

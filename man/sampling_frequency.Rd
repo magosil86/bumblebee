@@ -20,7 +20,12 @@ sampling_frequency
 }
 \description{
 Estimated number of individuals with HIV in intervention and control communities
-of the BCPP/Ya Tsie trial and the number of individuals sampled from each for
+of the BCPP/Ya Tsie trial, and the number of individuals sampled from each for
 HIV viral phylogenetic analysis.
+}
+\references{
+Magosi LE, et al., Deep-sequence phylogenetics to quantify patterns of
+HIV transmission in the context of a universal testing and treatment
+trial – BCPP/ Ya Tsie trial. To submit for publication, 2021.
 }
 \keyword{datasets}

@@ -2,10 +2,9 @@
 % Please edit documentation in R/driver_estimate_transmissision_flows.r
 \name{estimate_transmission_flows_and_ci}
 \alias{estimate_transmission_flows_and_ci}
-\alias{estim_transmission_flows_and_ci}
-\alias{est_transmission_flows_and_ci}
+\alias{flows_and_ci}
 \alias{estimate_transmission_flows_and_ci.default}
-\title{\code{estimate_transmission_flows_and_ci} Estimates transmission flows and accompanying confidence intervals}
+\title{\code{estimate_transmission_flows_and_ci} Estimates transmission flows and corresponding confidence intervals}
 \usage{
 estimate_transmission_flows_and_ci(
   group_in,
@@ -32,8 +31,8 @@ estimate_transmission_flows_and_ci(
 
 \item{individuals_population_in, }{A numeric vector of the estimated number of individuals per population group,}
 
-\item{linkage_counts_in}{A data.frame of counts of identified/observed
-linked pairs per population group pairing. \cr
+\item{linkage_counts_in}{A data.frame of counts of linked pairs identified between samples of each population
+group pairing of interest. \cr
 The data.frame should contain the following three fields:
 \itemize{
 \item H1_group (character) Name of population group 1
@@ -63,8 +62,8 @@ Returns a data.frame containing:
 \item p_hat, Probability that pathogen sequences from two individuals randomly sampled from their respective population groups are linked
 \item est_linkedpairs_in_population, Estimated transmission pairs between population groups 1 and 2
 \item theta_hat, Estimated transmission flows or relative probability of transmission within and between population groups 1 and 2 adjusted
-\item for sampling heterogeneity. More precisely, the conditional probability that a pair of pathogen sequences is from a specific population
-\item group pairing given that the pair is linked.
+for sampling heterogeneity. More precisely, the conditional probability that a pair of pathogen sequences is from a specific population
+group pairing given that the pair is linked.
 \item obs_trm_pairs_est_goodman, Point estimate, Goodman method Confidence intervals for observed transmission pairs
 \item obs_trm_pairs_lwr_ci_goodman, Lower bound of Goodman confidence interval
 \item obs_trm_pairs_upr_ci_goodman, Upper bound of Goodman confidence interval
@@ -96,20 +95,68 @@ one pathogen sequence in another population group i.e. probability of clustering
 }
 }
 \description{
-This function estimates transmission flows within and between population
-groups accounting for variable sampling among population groups. Confidence
-intervals for estimated transmission flows are provided with the following
-methods: Goodman, Sison-Glaz and Queensbury-Hurst.
+This function estimates transmission flows or the relative probability
+of transmission within and between population groups accounting for
+variable sampling among population groups.
+
+Corresponding confidence intervals are provided with the following methods: Goodman,
+Goodman with a continuity correction, Sison-Glaz and Queensbury-Hurst.
 }
 \details{
 Counts of observed directed transmission pairs can be obtained from
 deep-sequence phylogenetic data (via phyloscanner) or from known
 epidemiological contacts. Note: Deep-sequence data is also commonly
 referred to as high-throughput or next-generation sequence data. See
-references to learn more about phyloscanner.\preformatted{     The \code{estimate_transmission_flows_and_ci} function is a wrapper function 
-     that calls the \code{estimate_theta_hat} function to estimate transmission flows
-     and the \code{estimate_multinom_ci} function to compute the corresponding 
-     confidence intervals.
+references to learn more about phyloscanner.
+
+The \code{estimate_transmission_flows_and_ci()} function is a
+wrapper function that calls the following functions:
+
+\enumerate{
+
+\item The \code{prep_p_hat()} function to determine all possible
+combinations of the population groups/strata provided by
+the user. Type \code{?prep_p_hat()} at R prompt to learn
+more.
+
+\item The \code{estimate_p_hat()} function to compute the
+probability of linkage between pathogen sequences from
+two individuals randomly sampled from their respective
+population groups. Type \code{?estimate_p_hat()} at R
+prompt to learn more.
+
+\item The \code{estimate_theta_hat()} function that uses
+\code{p_hat} estimates to compute the conditional
+probability of linkage that a pair of pathogen sequences
+is from a specific population group pairing given that
+the pair is linked. The conditional  probability,
+\code{theta_hat} represents transmission flows or
+the relative probability of transmission within and between
+population groups adjusted for variable sampling among
+population groups. Type \code{?estimate_theta_hat()} at R
+prompt to learn more.
+
+\item The \code{estimate_multinom_ci()} function to estimate
+corresponding confidence intervals for the computed
+transmission flows.
+}
+
+Further to estimating transmission flows and corresponding confidence
+intervals the \code{estimate_transmission_flows_and_ci()} function provides
+estimates for:
+
+\enumerate{
+
+\item \code{prob_group_pairing_and_linked}, the joint probability that a
+pair of pathogen sequences is from a specific population group
+pairing and linked. Type \code{?estimate_prob_group_pairing_and_linked()}
+at R prompt to learn more.
+
+\item \code{c_hat}, the probability of clustering that a pathogen sequence
+from a population group of interest is linked to one or more
+pathogen sequences in another population group of interest. Type
+\code{?estimate_c_hat()} at R prompt to learn more.
+
 }
 }
 \section{Methods (by class)}{
@@ -162,6 +209,8 @@ results_estimate_transmission_flows_and_ci_detailed <- estimate_transmission_flo
 # View results
 results_estimate_transmission_flows_and_ci_detailed
 
+# Retrieve dataset of estimated transmission flows 
+dframe <- results_estimate_transmission_flows_and_ci_detailed$flows_dataset 
 
 # Options:
 # To show intermediate output set verbose_output = TRUE
@@ -193,10 +242,18 @@ results_estimate_transmission_flows_and_ci_detailed
 \references{
 \enumerate{
 
+\item Magosi LE, et al., Deep-sequence phylogenetics to quantify patterns of
+HIV transmission in the context of a universal testing and treatment
+trial – BCPP/ Ya Tsie trial. To submit for publication, 2021.
+
 \item Carnegie, N.B., et al., Linkage of viral sequences among HIV-infected
 village residents in Botswana: estimation of linkage rates in the
 presence of missing data. PLoS Computational Biology, 2014. 10(1):
 p. e1003430.
+
+\item Cherry, S., A Comparison of Confidence Interval Methods for Habitat
+Use-Availability Studies. The Journal of Wildlife Management, 1996.
+60(3): p. 653-658.
 
 \item Ratmann, O., et al., Inferring HIV-1 transmission networks and sources of
 epidemic spread in Africa with deep-sequence phylogenetic analysis.
@@ -224,6 +281,6 @@ Paper and code available at https://www.jstatsoft.org/v05/i06.
 }
 }
 \seealso{
-\code{\link{estimate_theta_hat}} and \code{\link{estimate_theta_hat}} to learn
+\code{\link{estimate_theta_hat}} and \code{\link{estimate_multinom_ci}} to learn
 more about estimation of transmission flows and confidence intervals.
 }

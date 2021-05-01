@@ -1,29 +1,29 @@
 #' Bumblebee: Quantify Disease Transmission Within and Between Population Groups
 #' 
-#' @description 
-#' Quantifying the impact of interventions and demographics on patterns of disease
-#' transmission is important for controlling the spread of infections. The bumblebee 
-#' package uses counts of observed directed transmission pairs to estimate transmission 
-#' flows within and between population groups accounting for sampling variability 
-#' among population groups. Population groups might include geographical areas, 
-#' for example, communities or egions; demographic groups, for example, age and/or
-#' gender groups; and randomized-intervention conditions of a clinical trial.
+#' @description
+#' Bumblebee uses counts of directed transmission pairs identified between samples
+#' from population groups of interest to estimate the flow of transmissions within 
+#' and between those population groups accounting for sampling heterogeneity.
 #' 
-#' Counts of observed directed transmission pairs can be obtained
-#' from deep-sequence phylogenetic data (via phyloscanner) or known
-#' epidemiological contacts. Note: Deep-sequence data is also commonly referred to as
-#' high-throughput or next-generation sequence data. See references to learn more
-#' about phyloscanner.
+#' Population groups might include: communities, geographical regions, age-gender 
+#' groupings or arms of a randomized-clinical trial.
+#' 
+#' Counts of observed directed transmission pairs can be obtained from deep-sequence 
+#' phylogenetic data (via phyloscanner) or known epidemiological contacts. Note: 
+#' Deep-sequence data is also commonly referred to as high-throughput or
+#' next-generation sequence data. See references to learn more about phyloscanner.
 #' 
 #' @section The \code{estimate_transmission_flows()} function:
-#' To estimate transmission flows the function: \code{estimate_transmission_flows_and_ci()}
-#' computes the conditional probability, \code{theta_hat} that a pair of pathogen sequences 
-#' is from a specific population group pairing given that the pair is linked. For two population
-#' groups of interest \eqn{(u,v)} this denotes the relative probability of transmission 
-#' within and between population groups \eqn{u} and \eqn{v} adjusted for sampling heterogeneity.
+#' To estimate transmission flows, that is, the relative probability of transmission 
+#' within and between population groups accounting for variable sampling the among
+#' the population groups the function: \code{estimate_transmission_flows_and_ci()}
+#' computes the conditional probability, \code{theta_hat} that a pair of pathogen
+#' sequences is from a specific population group pairing given that the pair is
+#' linked.
 #' 
-#' \deqn{\theta_ij = P(pair is from population groups (i, j) | pair is linked), where i = u,v and j = u,v}
+#' For two population groups of interest \eqn{(u,v)} \code{theta_hat} is denoted by 
 #' 
+#' \deqn{\hat{\theta_{ij}} = Pr(pair from groups (i,j) | pair is linked), where i = u,v and j = u,v .}
 #' 
 #' To learn more and try some examples, see documentation of the 
 #' \code{estimate_transmission_flows()} function and the bumblebee package
@@ -45,7 +45,11 @@
 #' 
 #' @references
 #' \enumerate{
-#' 
+#'
+#'    \item Magosi LE, et al., Deep-sequence phylogenetics to quantify patterns of 
+#'          HIV transmission in the context of a universal testing and treatment
+#'          trial – BCPP/ Ya Tsie trial. To submit for publication, 2021.
+#'
 #'    \item Carnegie, N.B., et al., Linkage of viral sequences among HIV-infected
 #' 		 village residents in Botswana: estimation of linkage rates in the 
 #' 		 presence of missing data. PLoS Computational Biology, 2014. 10(1): 
