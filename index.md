@@ -76,7 +76,7 @@ library(dplyr)      # for working with data.frames
 
 ## Usage
 
-Load the bumblebee package in your current R session, and try some examples in the [example workflow](file:///Users/lmagosi/Downloads/create_bumblebee_rpkg/bumblebee/vignettes/bumblebee-estimate-transmission-flows-and-ci-tutotial.html)
+Load the bumblebee package in your current R session, and try some examples in the [example workflow](https://github.com/magosil86/bumblebee/blob/master/vignettes/bumblebee-estimate-transmission-flows-and-ci-tutotial.md)
 
 ```{r}
 # Load libraries
