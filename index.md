@@ -106,8 +106,8 @@ trial – BCPP/ Ya Tsie trial. To submit for publication, 2021.
 
 ## Getting help.
 To suggest a new feature, report a bug or ask for help, please provide a reproducible 
-example at: https://github.com/magosil86/bumblebee/issues. Also see reprex to learn 
-more about generating reproducible examples.
+example at: https://github.com/magosil86/bumblebee/issues. Also see 
+[reprex](https://reprex.tidyverse.org/) to learn more about generating reproducible examples.
 
 
 ## Code of conduct.
@@ -139,3 +139,4 @@ Lerato E. Magosi lmagosi@hsph.harvard.edu or magosil86@gmail.com
 
 ## License.
 See the [LICENSE](https://github.com/magosil86/bumblebee/blob/master/LICENSE) file.
+
