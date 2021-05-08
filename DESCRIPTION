@@ -21,7 +21,6 @@ License: MIT + file LICENSE
 URL: https://magosil86.github.io/bumblebee/
 BugReports: https://github.com/magosil86/bumblebee/issues
 LazyData: true
-Depends: R (>= 2.10)
 Imports: 
     ACSWR (>= 1.0),
     CoinMinD (>= 1.1),
