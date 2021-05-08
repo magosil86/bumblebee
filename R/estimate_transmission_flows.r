@@ -14,12 +14,15 @@
 # library(Hmisc)     # needed for capitalizing elements of a character vector
 # library(magrittr)  # needed for the pipe function
 # library(gtools)    # needed for computing permutations and combinations
-# library(DescTools) # needed for computing simultaneous confidence intervals for a multinomial proportions (Goodman, Sison-Glaz)
-# library(ACSWR)     # needed for computing Queensbury Hurst simultaneous confidence intervals
-# library(CoinMinD)  # needed for computing Queensbury Hurst simultaneous confidence intervals (narrow CIs)
 # library(stats)     # needed for the following functions: qchisq
 # library(utils)     # needed for the following functions: str, head, tail
 
+
+# Optional libraries ---------------------------
+
+# library(DescTools) # needed for computing simultaneous confidence intervals for a multinomial proportions (Goodman, Sison-Glaz)
+# library(ACSWR)     # needed for computing Queensbury Hurst simultaneous confidence intervals
+# library(CoinMinD)  # needed for computing Queensbury Hurst simultaneous confidence intervals (narrow CIs)
 
 
 # Calling globalVariables on the following variables to address 
