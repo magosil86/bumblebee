@@ -12,7 +12,7 @@ A data frame:
 \item{num_linked_pairs_observed}{Number of observed directed transmission pairs between samples from population groups 1 and 2}}
 }
 \source{
-\url{https://magosil86.github.io/bumblebee}
+\url{https://magosil86.github.io/bumblebee/}
 }
 \usage{
 counts_hiv_transmission_pairs
@@ -24,7 +24,7 @@ HIV prevention trial in Botswana (2013-2018). The Botswana -Ya Tsie
 trial was a pair-matched community randomized trial that evaluated
 the effect of a universal HIV test and treat intervention in reducing
 population-level incidence. For further details see references and:
-\url{https://magosil86.github.io/bumblebee}.
+\url{https://magosil86.github.io/bumblebee/}.
 }
 \references{
 Magosi LE, et al., Deep-sequence phylogenetics to quantify patterns of

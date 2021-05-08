@@ -45,7 +45,7 @@ fraction of distinct possible pairs between samples from groups \eqn{u} and
 pairs in the sample is the product of sampled individuals in groups \eqn{u}
 and \eqn{u}. If \eqn{u = v}, then the distinct possible pairs is the number
 of individuals sampled in population group \eqn{u} choose 2. See bumblebee
-website for more details \url{https://magosil86.github.io/bumblebee}.
+website for more details \url{https://magosil86.github.io/bumblebee/}.
 }
 \section{Methods (by class)}{
 \itemize{

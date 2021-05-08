@@ -52,7 +52,7 @@ and are computed as \deqn{\hat{\theta_{ij}} = Pr(pair from groups (i,j) | pair i
 
 \deqn{\hat{\theta_{ij}} = \frac{N_{ij}p_{ij}}{ \sum_m \sum_{n \ge m}N_{mn}p_{mn}}, where i = u,v and j = u,v ,}
 
-See bumblebee website for more details \url{https://magosil86.github.io/bumblebee}.
+See bumblebee website for more details \url{https://magosil86.github.io/bumblebee/}.
 }
 \section{Methods (by class)}{
 \itemize{

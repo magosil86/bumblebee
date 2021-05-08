@@ -47,7 +47,7 @@ one pathogen sequence in another population group i.e. probability of clustering
 }
 }
 \source{
-\url{https://magosil86.github.io/bumblebee}
+\url{https://magosil86.github.io/bumblebee/}
 }
 \usage{
 estimated_hiv_transmission_flows

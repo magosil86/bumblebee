@@ -6,7 +6,7 @@
 #' trial was a pair-matched community randomized trial that evaluated
 #' the effect of a universal HIV test and treat intervention in reducing
 #' population-level incidence. For further details see references and:
-#' \url{https://magosil86.github.io/bumblebee}.
+#' \url{https://magosil86.github.io/bumblebee/}.
 #' 
 #' @format A data frame:
 #' \describe{
@@ -20,7 +20,7 @@
 #' trial – BCPP/ Ya Tsie trial. To submit for publication, 2021.
 #' 
 #'
-#' @source \url{https://magosil86.github.io/bumblebee}
+#' @source \url{https://magosil86.github.io/bumblebee/}
 #'
 "counts_hiv_transmission_pairs"
 
@@ -42,7 +42,7 @@
 #' HIV transmission in the context of a universal testing and treatment
 #' trial – BCPP/ Ya Tsie trial. To submit for publication, 2021.
 #'
-#' @source \url{https://magosil86.github.io/bumblebee}
+#' @source \url{https://magosil86.github.io/bumblebee/}
 #'
 "sampling_frequency"
 
@@ -97,6 +97,6 @@
 #' HIV transmission in the context of a universal testing and treatment
 #' trial – BCPP/ Ya Tsie trial. To submit for publication, 2021.
 #'
-#' @source \url{https://magosil86.github.io/bumblebee}
+#' @source \url{https://magosil86.github.io/bumblebee/}
 #'
 "estimated_hiv_transmission_flows"

@@ -13,7 +13,7 @@ A data frame:
 }
 }
 \source{
-\url{https://magosil86.github.io/bumblebee}
+\url{https://magosil86.github.io/bumblebee/}
 }
 \usage{
 sampling_frequency

@@ -451,7 +451,7 @@ prep_p_hat.default <- function(group_in,
 #' 		 pairs in the sample is the product of sampled individuals in groups \eqn{u} 
 #' 		 and \eqn{u}. If \eqn{u = v}, then the distinct possible pairs is the number 
 #' 		 of individuals sampled in population group \eqn{u} choose 2. See bumblebee
-#' 		 website for more details \url{https://magosil86.github.io/bumblebee}.
+#' 		 website for more details \url{https://magosil86.github.io/bumblebee/}.
 #'          
 #' @aliases p_hat phat est_p_hat estim_p_hat estimate_p_hat
 #' 
@@ -581,7 +581,7 @@ estimate_p_hat.default <- function(df_counts, ...) {
 #'     \item N choose 2 or (N * (N - 1))/2 : all distinct possible pairs in population.
 #' }
 #'
-#' See bumblebee website for more details \url{https://magosil86.github.io/bumblebee}.
+#' See bumblebee website for more details \url{https://magosil86.github.io/bumblebee/}.
 #' 
 #' @aliases prob_group_pairing_and_linked estimate_prob_group_pairing_and_linked
 #' 
@@ -715,7 +715,7 @@ estimate_prob_group_pairing_and_linked.default <- function(df_counts_and_p_hat,
 #'                         
 #' \deqn{\hat{\theta_{ij}} = \frac{N_{ij}p_{ij}}{ \sum_m \sum_{n \ge m}N_{mn}p_{mn}}, where i = u,v and j = u,v ,}
 #' 
-#' See bumblebee website for more details \url{https://magosil86.github.io/bumblebee}.
+#' See bumblebee website for more details \url{https://magosil86.github.io/bumblebee/}.
 #' 
 #' @aliases theta_hat est_theta_hat estim_theta_hat estimate_theta_hat
 #' 

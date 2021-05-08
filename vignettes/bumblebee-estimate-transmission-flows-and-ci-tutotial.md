@@ -10,7 +10,7 @@ vignette: >
 ---
 
 
-![](https://user-images.githubusercontent.com/8364031/116549613-b4c79580-a8c3-11eb-9415-1330f491e6a0.png){width=95%}
+![](fig/bumblebee_transmission_flows_with_title_and_labels_img.png){width=95%}
 
 ## Background
 

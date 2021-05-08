@@ -64,7 +64,7 @@ from groups \eqn{u} and \eqn{v}
 \item N choose 2 or (N * (N - 1))/2 : all distinct possible pairs in population.
 }
 
-See bumblebee website for more details \url{https://magosil86.github.io/bumblebee}.
+See bumblebee website for more details \url{https://magosil86.github.io/bumblebee/}.
 }
 \section{Methods (by class)}{
 \itemize{
