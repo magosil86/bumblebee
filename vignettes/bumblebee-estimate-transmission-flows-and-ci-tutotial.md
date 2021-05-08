@@ -10,7 +10,7 @@ vignette: >
 ---
 
 
-![](fig/bumblebee_transmission_flows_with_title_and_labels_img.png){width=95%}
+![](fig/bumblebee_transmission_flows_with_title_and_labels_img.png)
 
 ## Background
 
