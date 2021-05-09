@@ -125,10 +125,15 @@ trial – BCPP/ Ya Tsie trial. To submit for publication, 2021.
    HIV transmission in the context of a universal testing and treatment
    trial – BCPP/ Ya Tsie trial. To submit for publication, 2021.
 
-2. Goodman, L. A. On Simultaneous Confidence Intervals for Multinomial 
+2. Carnegie, N.B., et al., Linkage of viral sequences among HIV-infected
+   village residents in Botswana: estimation of linkage rates in the 
+   presence of missing data. PLoS Computational Biology, 2014. 10(1): 
+   p. e1003430.
+
+3. Goodman, L. A. On Simultaneous Confidence Intervals for Multinomial 
    Proportions Technometrics, 1965. 7, 247-254.
  
-3. Cherry, S., A Comparison of Confidence Interval Methods for Habitat 
+4. Cherry, S., A Comparison of Confidence Interval Methods for Habitat 
    Use-Availability Studies. The Journal of Wildlife Management, 1996. 
    60(3): p. 653-658.
 
