@@ -1,5 +1,8 @@
-## New submission
-This is my first submission.
+## Resubmission
+This is a resubmission. In this version I have:
+
+* Updated the DESCRIPTION so that it does not begin
+  with "This package", package name, title or similar.
 
 ## Test environments
 * local macOS install, R 4.0.4

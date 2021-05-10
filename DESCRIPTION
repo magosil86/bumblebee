@@ -8,8 +8,9 @@ Authors@R: c(
         role = "aut"), 
     person("Lerato E", "Magosi", email = "magosil86@gmail.com", 
         role = "cre"))
-Description: Quantify disease transmission within and between population groups 
-   using R. The 'bumblebee' package uses counts of observed directed 
+Description: A simple tool to quantify the amount of transmission
+   of an infectious disease of interest occurring within and between 
+   population groups. 'bumblebee' uses counts of observed directed 
    transmission pairs, identified phylogenetically from deep-sequence data or 
    from epidemiological contacts, to quantify transmission flows within and 
    between population groups accounting for sampling heterogeneity. Population 
