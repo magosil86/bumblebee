@@ -42,8 +42,8 @@ Specifically, to address the following questions:
    context of HIV prevention initiatives such as universal test-and-treat. 
    
    **To learn more see:** Magosi LE, et al., Deep-sequence phylogenetics to 
-   quantify patterns of HIV transmission in the context of a universal testing 
-   and treatment trial – BCPP/ Ya Tsie trial. To submit for publication, 2021.
+   quantify patterns of HIV transmission in the context of a universal testing
+   and treatment trial – BCPP/ Ya Tsie trial. eLife, 2022. 11:e72657.
  
 2. Quantifying transmission patterns of SARS-COV-2, the virus that causes COVID-19, 
    in the presence of heterogeneous vaccine uptake.
@@ -100,9 +100,9 @@ given that the pair is linked.
 
 **To read up about the statistical theory for estimating transmission flows see:**
 
-Magosi LE, et al., Deep-sequence phylogenetics to quantify patterns of HIV 
-transmission in the context of a universal testing and treatment 
-trial – BCPP/ Ya Tsie trial. To submit for publication, 2021.
+Magosi LE, et al., Deep-sequence phylogenetics to quantify patterns of HIV transmission 
+in the context of a universal testing and treatment trial – BCPP/ Ya Tsie trial. 
+eLife, 2022. 11:e72657.
 
 
 ## Getting help.
@@ -116,14 +116,14 @@ Contributions are welcome. Please observe the [Contributor Code of Conduct](http
 when participating in this project.
 
 ## Citation.
-Magosi LE, et al., Deep-sequence phylogenetics to quantify patterns of HIV 
-transmission in the context of a universal testing and treatment 
-trial – BCPP/ Ya Tsie trial. To submit for publication, 2021.
+Magosi LE, et al., Deep-sequence phylogenetics to quantify patterns of HIV
+transmission in the context of a universal testing and treatment trial 
+– BCPP/ Ya Tsie trial. eLife, 2022. 11:e72657
 
 ## References.
 1. Magosi LE, et al., Deep-sequence phylogenetics to quantify patterns of 
-   HIV transmission in the context of a universal testing and treatment
-   trial – BCPP/ Ya Tsie trial. To submit for publication, 2021.
+   HIV transmission in the context of a universal testing and treatment 
+   trial – BCPP/ Ya Tsie trial. eLife, 2022. 11:e72657.
 
 2. Carnegie, N.B., et al., Linkage of viral sequences among HIV-infected
    village residents in Botswana: estimation of linkage rates in the 
